@@ -96,12 +96,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .mt-ip{background:rgba(90,138,42,0.14);color:#8abe4a;border:0.5px solid rgba(90,138,42,0.22);}
 .mt-bm{background:rgba(112,96,200,0.14);color:#9888e8;border:0.5px solid rgba(112,96,200,0.22);}
 
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(10,9,5,0.94);backdrop-filter:blur(12px);border-top:0.5px solid var(--border);display:flex;padding:10px 0 16px;z-index:100;}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(10,9,5,0.94);backdrop-filter:blur(12px);border-top:0.5px solid var(--border);display:flex;padding:8px 0 14px;z-index:100;}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;opacity:0.38;transition:opacity 0.18s;border:none;background:none;}
 .nb.active{opacity:1;}
 .nb:hover{opacity:0.65;}
-.ni{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);}
-.nl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.11em;color:var(--text2);text-transform:uppercase;}
+.ni{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);}
+.nl{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:0.07em;color:var(--text2);text-transform:uppercase;}
 
 .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:0 16px;margin-top:13px;}
 .pc{background:var(--bg3);border:0.5px solid var(--border);border-radius:11px;padding:12px 9px;text-align:center;}
@@ -198,6 +198,166 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 .reset-btn{margin:14px 16px 0;padding:11px;border:0.5px solid var(--border);border-radius:10px;background:transparent;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.09em;text-transform:uppercase;cursor:pointer;width:calc(100% - 32px);transition:all 0.18s;}
 .reset-btn:hover{border-color:var(--border2);color:var(--text2);}
+/* ── RANKS ENHANCED ── */
+.rk-hero{background:var(--bg3);border:0.5px solid var(--border2);border-radius:16px;padding:20px;margin:0 16px 16px;text-align:center;position:relative;overflow:hidden;}
+.rk-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(200,168,75,0.06),transparent 70%);pointer-events:none;}
+.rk-sigil-big{font-size:48px;color:var(--gold);margin-bottom:8px;line-height:1;}
+.rk-hero-name{font-family:'Cinzel',serif;font-size:22px;color:var(--text);letter-spacing:0.06em;margin-bottom:4px;}
+.rk-hero-roman{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:0.6;letter-spacing:0.15em;margin-bottom:10px;}
+.rk-hero-desc{font-size:13px;color:var(--text3);font-style:italic;line-height:1.5;margin-bottom:14px;}
+.rk-hero-xp{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);}
+.rk-next-box{background:var(--bg4);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin:0 16px 16px;}
+.rk-next-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
+.rk-next-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.rk-next-icon{font-size:14px;color:var(--gold);flex-shrink:0;min-width:20px;}
+.rk-next-text{font-size:13px;color:var(--text2);line-height:1.4;}
+.rk-next-text b{color:var(--text);font-weight:500;}
+.rk-history{padding:0 16px;margin-bottom:12px;}
+.rk-history-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
+.rk-hist-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border:0.5px solid var(--border);border-radius:8px;margin-bottom:6px;background:var(--bg2);}
+.rk-hist-sigil{font-size:16px;flex-shrink:0;}
+.rk-hist-info{flex:1;}
+.rk-hist-name{font-size:13px;color:var(--text);font-family:'Cinzel',serif;}
+.rk-hist-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px;}
+.rk-hist-xp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);opacity:0.6;}
+.rk-all-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;padding:0 16px;margin-bottom:10px;}
+.rkcard{border:0.5px solid var(--border);border-radius:12px;margin:0 16px 9px;background:var(--bg2);overflow:hidden;}
+.rkcard.cur{border-color:rgba(200,168,75,0.38);background:var(--bg3);}
+.rkcard.lk{opacity:0.3;}
+.rkh{display:flex;align-items:center;gap:11px;padding:12px 13px 8px;}
+.rk-card-sigil{font-size:20px;flex-shrink:0;min-width:28px;text-align:center;}
+.rknw{flex:1;}
+.rkn{font-family:'Cinzel',serif;font-size:13px;color:var(--text);letter-spacing:0.04em;}
+.rkq{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px;}
+.rkcbadge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--gold);border:0.5px solid rgba(200,168,75,0.28);padding:2px 7px;border-radius:20px;}
+.rkbm{height:2px;background:var(--bg4);margin:0 13px 8px;border-radius:1px;overflow:hidden;}
+.rkbf{height:100%;border-radius:1px;transition:width 0.5s;}
+
+
+
+/* ── INNER COUNCIL TRANSFORMATION ── */
+.council-screen{padding:0 16px;margin-top:14px;}
+.council-card{margin-bottom:24px;border:0.5px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2);transition:border-color 0.5s;}
+.council-card.transforming{border-color:rgba(200,168,75,0.2);}
+.council-card.complete{border-color:rgba(42,158,117,0.45);box-shadow:0 0 20px rgba(42,158,117,0.06);}
+
+/* Silhouette header */
+.cc-hero{position:relative;padding:28px 20px 22px;text-align:center;overflow:hidden;}
+.cc-figure-wrap{position:relative;display:inline-block;margin-bottom:14px;}
+.cc-figure{width:90px;height:110px;display:block;margin:0 auto;}
+.cc-stage-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.cc-mastery-stage{font-family:'Cinzel',serif;font-size:16px;letter-spacing:0.06em;margin-bottom:3px;transition:color 0.5s;}
+.cc-role{font-size:11px;color:var(--text3);font-style:italic;margin-bottom:10px;}
+.cc-stage-desc{font-size:13px;color:var(--text2);font-style:italic;line-height:1.6;max-width:280px;margin:0 auto 14px;}
+
+/* Progress ring simulation using bar */
+.cc-prog-wrap{display:flex;align-items:center;gap:10px;margin:0 auto;max-width:300px;}
+.cc-prog-bar{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.cc-prog-fill{height:100%;border-radius:2px;transition:width 0.7s cubic-bezier(0.4,0,0.2,1);}
+.cc-prog-pct{font-family:'JetBrains Mono',monospace;font-size:11px;min-width:36px;text-align:right;}
+.cc-xp-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);text-align:center;margin-top:6px;}
+
+/* Stage timeline */
+.cc-stages{padding:0 16px 16px;}
+.cc-stage-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:0;position:relative;}
+.cc-stage-row::before{content:'';position:absolute;left:11px;top:22px;bottom:-14px;width:1px;background:var(--border);}
+.cc-stage-row:last-child::before{display:none;}
+.cc-stage-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:0;transition:all 0.4s;background:var(--bg2);z-index:1;}
+.cc-stage-dot.reached{color:#fff;border-color:transparent;}
+.cc-stage-dot.current{box-shadow:0 0 0 3px rgba(200,168,75,0.15);}
+.cc-stage-info{flex:1;padding-bottom:14px;}
+.cc-sname{font-size:13px;font-weight:500;color:var(--text3);font-family:'Cinzel',serif;letter-spacing:0.04em;line-height:1.3;}
+.cc-sname.reached{color:var(--text);}
+.cc-sname.current-stage{color:var(--gold);}
+.cc-sdesc{font-size:12px;color:var(--text3);font-style:italic;margin-top:2px;line-height:1.4;}
+.cc-sdesc.reached{color:var(--text2);}
+.cc-sat{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);margin-top:2px;opacity:0.6;}
+
+/* Quote */
+
+.cc-mphase-row{display:flex;gap:7px;justify-content:center;margin:10px 0 14px;}
+.cc-mphase-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--border2);background:transparent;transition:all 0.4s;}
+.cc-mphase-dot.reached{border-color:transparent;}
+.cc-mphase-dot.current{transform:scale(1.25);}
+
+.cc-quote{font-size:13px;color:var(--text2);font-style:italic;line-height:1.6;padding:12px 20px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);margin-bottom:0;}
+
+/* ── GOALS ── */
+.goal-months{display:flex;gap:5px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none;}
+.goal-months::-webkit-scrollbar{display:none;}
+.gm-tab{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.07em;padding:5px 12px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);background:transparent;cursor:pointer;white-space:nowrap;transition:all 0.18s;flex-shrink:0;}
+.gm-tab.active{border-color:var(--border2);color:var(--gold);background:var(--gold-dim);}
+
+.add-goal-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:0.5px dashed var(--border2);border-radius:10px;background:transparent;color:var(--gold);font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.08em;cursor:pointer;margin-bottom:8px;transition:all 0.18s;opacity:0.7;}
+.add-goal-btn:hover{opacity:1;background:var(--gold-dim);}
+
+.goal-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;transition:border-color 0.18s;}
+.goal-card.complete{border-color:rgba(42,158,117,0.3);}
+.goal-card-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.goal-mentor-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.goal-name{font-family:'Cinzel',serif;font-size:13px;color:var(--text);flex:1;line-height:1.4;}
+.goal-target-lbl{font-size:11px;color:var(--text3);font-style:italic;margin-top:2px;}
+.goal-actions{display:flex;gap:6px;flex-shrink:0;}
+.goal-edit-btn,.goal-del-btn{font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 8px;border-radius:20px;cursor:pointer;border:0.5px solid var(--border);background:transparent;transition:all 0.18s;}
+.goal-edit-btn{color:var(--gold);}
+.goal-edit-btn:hover{background:var(--gold-dim);}
+.goal-del-btn{color:var(--red);}
+.goal-del-btn:hover{background:var(--red-dim);}
+
+.goal-pct-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.goal-pct-bar{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.goal-pct-fill{height:100%;border-radius:2px;transition:width 0.5s;}
+.goal-pct-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);min-width:32px;text-align:right;}
+
+.goal-weeks{display:flex;flex-direction:column;gap:6px;}
+.goal-week{display:flex;align-items:center;gap:9px;padding:8px 10px;border:0.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
+.goal-week:hover{border-color:var(--border2);background:var(--bg4);}
+.goal-week.done{opacity:0.45;}
+.goal-week.done .gw-label{text-decoration:line-through;}
+.gw-chk{width:16px;height:16px;border-radius:50%;border:1px solid var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;transition:all 0.18s;}
+.goal-week.done .gw-chk{background:var(--inner);border-color:transparent;color:#fff;}
+.gw-label{font-size:12px;color:var(--text2);flex:1;}
+.gw-target{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);opacity:0.6;}
+
+/* GOAL MODAL INPUTS */
+.gm-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
+.gm-input{width:100%;background:var(--bg4);border:0.5px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;outline:none;transition:border-color 0.18s;}
+.gm-input:focus{border-color:rgba(200,168,75,0.4);}
+.gm-week-input{width:100%;background:var(--bg4);border:0.5px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--text);font-family:'Crimson Pro',serif;font-size:13px;outline:none;margin-bottom:5px;transition:border-color 0.18s;}
+.gm-week-input:focus{border-color:rgba(200,168,75,0.3);}
+.gm-week-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.gm-week-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);min-width:48px;}
+.gm-mentor-row{display:flex;gap:6px;flex-wrap:wrap;}
+.gm-mentor-btn{font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 9px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);background:transparent;cursor:pointer;transition:all 0.15s;letter-spacing:0.04em;}
+.gm-mentor-btn.sel{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+
+/* ── TODO ── */
+.todo-input-row{display:flex;gap:8px;align-items:center;}
+.todo-input{flex:1;background:var(--bg3);border:0.5px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;outline:none;transition:border-color 0.18s;}
+.todo-input:focus{border-color:rgba(200,168,75,0.4);}
+.todo-add-btn{width:40px;height:40px;border-radius:10px;border:0.5px solid var(--border2);background:var(--gold-dim);color:var(--gold);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.18s;flex-shrink:0;line-height:1;}
+.todo-add-btn:hover{background:rgba(200,168,75,0.2);}
+
+.todo-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--border);border-radius:10px;margin-bottom:6px;background:var(--bg2);transition:all 0.18s;group:true;}
+.todo-item.done-t{opacity:0.38;}
+.todo-item.done-t .todo-text{text-decoration:line-through;}
+.todo-chk{width:18px;height:18px;border-radius:50%;border:1px solid var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all 0.18s;font-size:9px;}
+.todo-item.done-t .todo-chk{background:var(--inner);border-color:transparent;color:#fff;}
+.todo-text-wrap{flex:1;min-width:0;}
+.todo-text{font-size:14px;color:var(--text);line-height:1.4;font-weight:300;word-break:break-word;}
+.todo-text-input{width:100%;background:transparent;border:none;color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;outline:none;padding:0;}
+.todo-del{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;border-radius:20px;border:0.5px solid rgba(200,64,64,0.25);color:var(--red);background:transparent;cursor:pointer;opacity:0;transition:opacity 0.18s;flex-shrink:0;}
+.todo-item:hover .todo-del{opacity:0.7;}
+
+.todo-section-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin:14px 0 7px;display:flex;align-items:center;justify-content:space-between;}
+.todo-clear-btn{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red);opacity:0.5;cursor:pointer;background:none;border:none;padding:0;transition:opacity 0.18s;}
+.todo-clear-btn:hover{opacity:1;}
+
+.day-pills{display:flex;gap:4px;padding-left:24px;}
+.day-pill{width:24px;height:24px;border-radius:50%;border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);transition:all 0.18s;}
+.day-pill.dp-done{background:var(--inner);border-color:var(--inner);color:#fff;}
+.day-pill.dp-skip{background:var(--red-dim);border-color:var(--red);color:var(--red);}
+.day-pill.dp-cur{border-color:var(--gold);color:var(--gold);}
 </style>
 </head>
 <body>
@@ -232,17 +392,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="pill r" id="st4" style="display:none">0 skipped</div>
     </div>
   </div>
-  <div class="debuff-bar" id="dbar"><div class="di">⚡</div><div class="dt" id="dtext"></div></div>
-  <div class="ftabs">
-    <button class="ftab active" data-f="all" onclick="filt('all',this)">All</button>
-    <button class="ftab" data-f="physical" onclick="filt('physical',this)">Physical</button>
-    <button class="ftab" data-f="mind" onclick="filt('mind',this)">Mind</button>
-    <button class="ftab" data-f="inner" onclick="filt('inner',this)">Inner</button>
-    <button class="ftab" data-f="wealth" onclick="filt('wealth',this)">Wealth</button>
-    <button class="ftab" data-f="creative" onclick="filt('creative',this)">Creative</button>
-    <button class="ftab" data-f="social" onclick="filt('social',this)">Social</button>
-  </div>
-  <div class="scroll-area"><div class="section" id="tc"></div><div style="height:10px"></div></div>
+  <div class="scroll-area" style="margin-top:8px"><div style="padding:0 16px" id="tc"></div><div style="height:10px"></div></div>
 </div>
 
 <!-- PROGRESS -->
@@ -273,7 +423,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <!-- COUNCIL -->
 <div class="screen" id="screen-council">
   <div class="app-header"><div class="app-title">Inner Council</div><div class="ornament">· · ·</div></div>
-  <div class="scroll-area"><div style="padding:0 16px;margin-top:13px" id="cl"></div><div style="height:12px"></div></div>
+  <div class="scroll-area"><div class="council-screen" id="cl"></div><div style="height:12px"></div></div>
 </div>
 
 <!-- RANKS -->
@@ -282,15 +432,72 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="scroll-area"><div style="padding:0 16px;margin-top:13px" id="rl"></div><div style="height:12px"></div></div>
 </div>
 
+<!-- GOALS -->
+<div class="screen" id="screen-goals">
+  <div class="app-header"><div class="app-title">Goals — 2026</div><div class="ornament">· · ·</div></div>
+  <div class="scroll-area">
+    <div id="goal-months"></div>
+    <div style="padding:0 16px;margin-top:4px" id="goal-list"></div>
+    <div style="height:12px"></div>
+  </div>
+</div>
+
+<!-- TODO -->
+<div class="screen" id="screen-todo">
+  <div class="app-header"><div class="app-title">Daily To-Do</div><div class="ornament">· · ·</div></div>
+  <div class="scroll-area">
+    <div style="padding:0 16px;margin-top:14px">
+      <div class="todo-input-row">
+        <input type="text" id="todo-input" class="todo-input" placeholder="Add a task for today..." maxlength="120" onkeydown="if(event.key==='Enter')addTodo()">
+        <button class="todo-add-btn" onclick="addTodo()">+</button>
+      </div>
+      <div id="todo-list" style="margin-top:12px"></div>
+    </div>
+    <div style="height:12px"></div>
+  </div>
+</div>
+
 <nav class="bottom-nav">
   <button class="nb active" onclick="go('today',this)"><div class="ni">◈</div><div class="nl">Today</div></button>
   <button class="nb" onclick="go('progress',this)"><div class="ni">◆</div><div class="nl">Progress</div></button>
+  <button class="nb" onclick="go('goals',this)"><div class="ni">◇</div><div class="nl">Goals</div></button>
+  <button class="nb" onclick="go('todo',this)"><div class="ni">≡</div><div class="nl">To-Do</div></button>
   <button class="nb" onclick="go('council',this)"><div class="ni">⬡</div><div class="nl">Council</div></button>
   <button class="nb" onclick="go('ranks',this)"><div class="ni">✦</div><div class="nl">Ranks</div></button>
 </nav>
 </div>
 
+<!-- GOAL MODAL — outside shell so fixed positioning covers full screen -->
+<div class="modal-ov" id="goal-modal">
+  <div class="modal" style="max-height:85vh;overflow-y:auto;padding-bottom:40px">
+    <div class="modal-ttl" id="gm-title">New Goal</div>
+    <div style="margin-bottom:12px">
+      <div class="gm-label">Goal title</div>
+      <input type="text" id="gm-name" class="gm-input" placeholder="e.g. Run 100km total" maxlength="80">
+    </div>
+    <div style="margin-bottom:12px">
+      <div class="gm-label">Measurable target</div>
+      <input type="text" id="gm-target" class="gm-input" placeholder="e.g. 100km, 4 books, ₹50,000 saved" oninput="suggestWeeks()">
+    </div>
+    <div style="margin-bottom:12px">
+      <div class="gm-label">Link to mentors (tap to select multiple)</div>
+      <div class="gm-mentor-row" id="gm-mentors"></div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="gm-label">Weekly targets <span style="color:var(--text3);font-size:11px;font-style:italic">(4 weeks)</span></div>
+      <div id="gm-suggestion" style="font-size:11px;color:var(--gold);font-style:italic;margin-bottom:7px;opacity:0.7"></div>
+      <div id="gm-weeks"></div>
+    </div>
+    <div class="mbtns">
+      <button class="mbtn can" onclick="closeGoalModal()">Cancel</button>
+      <button class="mbtn conf" style="background:var(--gold-dim);border-color:rgba(200,168,75,0.4);color:var(--gold)" onclick="saveGoal()">Save Goal</button>
+    </div>
+  </div>
+</div>
+
 <script>
+const MENTOR_COLORS={ma:'#c8a84b',kb:'#e8a03a',dv:'#6aafef',mm:'#a09888',ep:'#4ad0a0',ip:'#8abe4a',bm:'#9888e8'};
+const MENTOR_NAMES={ma:'Aurelius',kb:'Kobe',dv:'Da Vinci',mm:'Musashi',ep:'Epictetus',ip:'Ippo',bm:'Batman'};
 const RANKS=[
   {name:'Apprentice',xp:0,unlocks:[
     {icon:'◈',type:'ability',cls:'ty-ability',name:'The Watcher',desc:'Morning + evening reflection unlocked. You observe your own patterns.'},
@@ -344,78 +551,126 @@ const RANKS=[
   ]}
 ];
 const ROMANS=['I','II','III','IV','V','VI','VII'];
+const RANK_SIGILS=['◉','◈','◆','✦','⬡','⊕','⬟'];
+const RANK_COLORS=['#888780','#378ADD','#639922','#BA7517','#7F77DD','#D85A30','#c8a84b'];
+const RANK_DESC=[
+  'You have begun. The system is watching.',
+  'Your curiosity has opened. You study now.',
+  'You practise with intention every day.',
+  'Your craft is evident. Others notice.',
+  'You operate at a level most never reach.',
+  'You have become a force of nature.',
+  'You are the system. You are them all.'
+];
 
 const COUNCIL=[
-  {id:'ma',name:'Marcus Aurelius',role:'The Sovereign · Overall lens',ini:'MA',col:'#c8a84b',bc:'rgba(168,144,96,0.28)',
+  {id:'ma',name:'Marcus Aurelius',role:'The Sovereign',ini:'MA',col:'#c8a84b',bc:'rgba(168,144,96,0.28)',
    quote:'"You have power over your mind, not outside events."',
    when:'Activates when you synthesize, reflect, or learn from everyone around you.',
    traits:['Philosopher\'s Eye','Sovereign Calm','Living Archive','Universal Learner'],
-   btraits:['Philosopher\'s Eye','Sovereign Calm','Living Archive','Universal Learner','The Synthesis'],max:200},
-  {id:'kb',name:'Kobe Bryant',role:'Training · Mamba Mentality',ini:'KB',col:'#e8a03a',bc:'rgba(200,130,26,0.28)',
+   btraits:['Philosopher\'s Eye','Sovereign Calm','Living Archive','Universal Learner','The Synthesis'],
+   stages:[
+     {at:0,  name:'The Stranger',   desc:'You have heard of Aurelius. Nothing more.'},
+     {at:10, name:'The Reader',     desc:'You have opened Meditations. The words land.'},
+     {at:25, name:'The Reflector',  desc:'You write your thoughts each morning. You begin to see.'},
+     {at:40, name:'The Observer',   desc:'You watch your reactions before acting. The gap grows.'},
+     {at:60, name:'The Student',    desc:'Philosophy is not theory for you. It is practice.'},
+     {at:80, name:'The Stoic',      desc:'You no longer need reminding. Equanimity is default.'},
+     {at:100,name:'The Emperor',    desc:'You carry the weight of your world without complaint.'},
+     {at:150,name:'The Sovereign',  desc:'You have become the philosopher-king of your own life.'},
+     {at:200,name:'Marcus Aurelius',desc:'You synthesize wisdom from everything around you. You are him.'},
+   ],max:200},
+  {id:'kb',name:'Kobe Bryant',role:'Mamba Mentality',ini:'KB',col:'#e8a03a',bc:'rgba(200,130,26,0.28)',
    quote:'"Rest at the end, not in the middle."',
    when:'Activates when you train, workout, or push past your physical limits.',
    traits:['Mamba Hours','Obsessive Craft','Relentless Standard','4AM Spirit'],
-   btraits:['Mamba Hours','Obsessive Craft','Relentless Standard','4AM Spirit','The Dark Hours'],max:120},
-  {id:'dv',name:'Leonardo da Vinci',role:'Curiosity · Renaissance Genius',ini:'DV',col:'#6aafef',bc:'rgba(58,127,193,0.28)',
+   btraits:['Mamba Hours','Obsessive Craft','Relentless Standard','4AM Spirit','The Dark Hours'],
+   stages:[
+     {at:0,  name:'The Spectator',  desc:'You admire the work ethic from the outside.'},
+     {at:10, name:'The Starter',    desc:'You show up. Not always early, but you show up.'},
+     {at:25, name:'The Consistent', desc:'Missing a session now bothers you. That\'s new.'},
+     {at:40, name:'The Early Riser',desc:'The alarm goes off. You don\'t negotiate anymore.'},
+     {at:60, name:'The Obsessed',   desc:'You think about your craft when no one else does.'},
+     {at:80, name:'The Standard',   desc:'Good enough is an insult to you now.'},
+     {at:100,name:'The Mamba',      desc:'You outwork everyone in the room. Quietly. Completely.'},
+     {at:120,name:'Kobe Bryant',    desc:'The dark hours are yours. No one reaches you there.'},
+   ],max:120},
+  {id:'dv',name:'Leonardo da Vinci',role:'Renaissance Genius',ini:'DV',col:'#6aafef',bc:'rgba(58,127,193,0.28)',
    quote:'"Learning never exhausts the mind."',
    when:'Activates when you study, read, explore, cook, or encounter something new.',
    traits:['Notebook Mind','Cross-domain Sight','Polyglot Layer','Insatiable Wonder'],
-   btraits:['Notebook Mind','Cross-domain Sight','Polyglot Layer','Insatiable Wonder','The Renaissance'],max:220},
-  {id:'mm',name:'Miyamoto Musashi',role:'Discipline · The Way of the Sword',ini:'MM',col:'#a09888',bc:'rgba(120,112,96,0.28)',
+   btraits:['Notebook Mind','Cross-domain Sight','Polyglot Layer','Insatiable Wonder','The Renaissance'],
+   stages:[
+     {at:0,  name:'The Incurious',  desc:'You consume what\'s given. You rarely ask why.'},
+     {at:10, name:'The Curious',    desc:'You start asking questions you don\'t need answers to.'},
+     {at:25, name:'The Note-taker', desc:'You carry something to write in. Always.'},
+     {at:40, name:'The Connector',  desc:'You see links between subjects others keep separate.'},
+     {at:60, name:'The Explorer',   desc:'Every discipline is an invitation. You accept them all.'},
+     {at:80, name:'The Polymath',   desc:'You speak multiple languages of knowledge.'},
+     {at:100,name:'The Genius',     desc:'Your curiosity has become its own engine. It never stops.'},
+     {at:150,name:'The Renaissance Man',desc:'You are an artist, scientist, cook, and philosopher at once.'},
+     {at:220,name:'Leonardo da Vinci',  desc:'You fill notebooks. You see everything. You become everything.'},
+   ],max:220},
+  {id:'mm',name:'Miyamoto Musashi',role:'The Way of the Sword',ini:'MM',col:'#a09888',bc:'rgba(120,112,96,0.28)',
    quote:'"Do nothing that is of no use."',
    when:'Activates when you hold your routine, resist distraction, or cut the useless.',
    traits:['Iron Routine','Void Mind','The Way','No Wasted Motion'],
-   btraits:['Iron Routine','Void Mind','The Way','No Wasted Motion','The Empty Mirror'],max:110},
-  {id:'ep',name:'Epictetus',role:'Mindset · Master of the Inner World',ini:'EP',col:'#4ad0a0',bc:'rgba(42,158,117,0.28)',
+   btraits:['Iron Routine','Void Mind','The Way','No Wasted Motion','The Empty Mirror'],
+   stages:[
+     {at:0,  name:'The Undisciplined',desc:'Your days are shapeless. The sword is still in its sheath.'},
+     {at:10, name:'The Trying',      desc:'You make the effort. You break it often. You try again.'},
+     {at:25, name:'The Routine',     desc:'You have a structure now. It holds most days.'},
+     {at:40, name:'The Guard',       desc:'You defend your time. Distraction finds no foothold.'},
+     {at:60, name:'The Swordsman',   desc:'Every action is deliberate. Nothing is wasted.'},
+     {at:80, name:'The Ronin',       desc:'You need no external motivation. The Way is your reason.'},
+     {at:110,name:'Miyamoto Musashi',desc:'Do nothing that is of no use. You have mastered this completely.'},
+   ],max:110},
+  {id:'ep',name:'Epictetus',role:'Master of the Inner World',ini:'EP',col:'#4ad0a0',bc:'rgba(42,158,117,0.28)',
    quote:'"It\'s not what happens to you, but how you react."',
    when:'Activates when you journal, meditate, face adversity, or check your reactions.',
    traits:['Unshakeable Core','Observer\'s Eye','Poet\'s Tongue','Fortress Mind'],
-   btraits:['Unshakeable Core','Observer\'s Eye','Poet\'s Tongue','Fortress Mind','The Inner Citadel'],max:175},
-  {id:'ip',name:'Ippo Makunouchi',role:'Kaizen · One Step at a Time',ini:'IP',col:'#8abe4a',bc:'rgba(90,138,42,0.28)',
+   btraits:['Unshakeable Core','Observer\'s Eye','Poet\'s Tongue','Fortress Mind','The Inner Citadel'],
+   stages:[
+     {at:0,  name:'The Reactive',   desc:'Events move you. You have not yet noticed this.'},
+     {at:10, name:'The Aware',      desc:'You catch yourself reacting. Sometimes after. Then during.'},
+     {at:25, name:'The Meditator',  desc:'You sit with discomfort without escaping it.'},
+     {at:40, name:'The Journaler',  desc:'You write what you cannot yet say. It helps.'},
+     {at:60, name:'The Stoic',      desc:'You separate what is yours from what is not. Daily.'},
+     {at:80, name:'The Unshaken',   desc:'People wonder why you don\'t panic. You know why.'},
+     {at:120,name:'The Freed Slave',desc:'Born in chains, Epictetus chose freedom inside. So do you.'},
+     {at:175,name:'Epictetus',      desc:'Your inner citadel is built. Nothing outside can reach you.'},
+   ],max:175},
+  {id:'ip',name:'Ippo Makunouchi',role:'Kaizen — One Step at a Time',ini:'IP',col:'#8abe4a',bc:'rgba(90,138,42,0.28)',
    quote:'"The weakest can become the strongest."',
    when:'Activates when you hit a plateau, lose a streak, or push 1% further today.',
    traits:['Rising Resilience','Compound Growth','Underdog Spirit','Never Break Chain'],
-   btraits:['Rising Resilience','Compound Growth','Underdog Spirit','Never Break Chain','The Comeback'],max:90},
-  {id:'bm',name:'Batman',role:'Thinking · The Prepared Mind',ini:'BM',col:'#9888e8',bc:'rgba(112,96,200,0.28)',
+   btraits:['Rising Resilience','Compound Growth','Underdog Spirit','Never Break Chain','The Comeback'],
+   stages:[
+     {at:0,  name:'The Defeated',   desc:'You have given up before. You know that feeling well.'},
+     {at:10, name:'The Fighter',    desc:'You get back up. Not because it\'s easy. Because you must.'},
+     {at:25, name:'The Grinder',    desc:'You do 1% more. Every single day. It compounds.'},
+     {at:40, name:'The Resilient',  desc:'You have taken hits. You\'re still here. That means something.'},
+     {at:60, name:'The Contender',  desc:'You no longer fear the plateau. You know it breaks.'},
+     {at:90, name:'Ippo Makunouchi',desc:'The weakest became the strongest. That was always the story.'},
+   ],max:90},
+  {id:'bm',name:'Batman',role:'The Prepared Mind',ini:'BM',col:'#9888e8',bc:'rgba(112,96,200,0.28)',
    quote:'"I am the world\'s greatest detective."',
    when:'Activates when you strategize, plan, play chess, or manage your wealth.',
    traits:['Tactical Foresight','Arsenal Mind','Bruce Wayne Mode','Always Prepared'],
-   btraits:['Tactical Foresight','Arsenal Mind','Bruce Wayne Mode','Always Prepared','The World\'s Best'],max:150}
+   btraits:['Tactical Foresight','Arsenal Mind','Bruce Wayne Mode','Always Prepared','The World\'s Best'],
+   stages:[
+     {at:0,  name:'The Unprepared', desc:'You enter situations hoping for the best. No plan.'},
+     {at:10, name:'The Planner',    desc:'You write tomorrow\'s priorities before you sleep.'},
+     {at:25, name:'The Thinker',    desc:'You move two steps ahead. You see patterns now.'},
+     {at:40, name:'The Strategist', desc:'You study chess not for the game but for the mind.'},
+     {at:60, name:'The Detective',  desc:'You ask why before you act. Every time.'},
+     {at:80, name:'Bruce Wayne',    desc:'You build your arsenal quietly. Wealth, knowledge, readiness.'},
+     {at:120,name:'The Dark Knight',desc:'You have prepared for every scenario. Nothing surprises you.'},
+     {at:150,name:'Batman',         desc:'I am the world\'s greatest detective. And so are you.'},
+   ],max:150}
 ];
 
-const TASKS=[
-  {id:'p1',area:'physical',name:'Morning workout before 7AM',hint:'Train before the world wakes up — Kobe\'s edge',xp:25,mentors:['kb','mm','ip']},
-  {id:'p2',area:'physical',name:'30 min deliberate skill work',hint:'Technique focus, not just reps. Master the form.',xp:20,mentors:['kb','ip']},
-  {id:'p3',area:'physical',name:'Do the rep you don\'t want to do',hint:'One moment of pushing past the urge to stop',xp:15,mentors:['kb','mm']},
-  {id:'p4',area:'physical',name:'1% improvement log',hint:'Note one physical thing better than yesterday',xp:10,mentors:['ip','mm']},
-  {id:'p5',area:'physical',name:'Study a peak performer',hint:'Watch, read, analyze someone at the top of their craft',xp:15,mentors:['kb','dv','ma']},
-  {id:'m1',area:'mind',name:'4 hours of deep study',hint:'No phone, no noise — pure learning block',xp:30,mentors:['dv','ma']},
-  {id:'m2',area:'mind',name:'Read 30 pages of a book',hint:'Non-fiction or philosophy preferred',xp:20,mentors:['dv','ma']},
-  {id:'m3',area:'mind',name:'Learn 10 words in a new language',hint:'Daily reps build polyglot fluency over time',xp:15,mentors:['dv','ip']},
-  {id:'m4',area:'mind',name:'Ask one deep "why does this work?" question',hint:'Go beyond surface. Understand the mechanism.',xp:10,mentors:['dv','bm']},
-  {id:'m5',area:'mind',name:'Write a summary of what you learned',hint:'Da Vinci always closed the loop. Capture it.',xp:15,mentors:['dv','ma','ep']},
-  {id:'i1',area:'inner',name:'Morning reflection — 3 intentions',hint:'Write before anything else. Set your mind.',xp:20,mentors:['ma','ep']},
-  {id:'i2',area:'inner',name:'Meditate for 15 minutes',hint:'Sit with what is. No fixing. Just observing.',xp:20,mentors:['ep','ma']},
-  {id:'i3',area:'inner',name:'Journal — dichotomy of control',hint:'What was in your control? Let go of the rest.',xp:20,mentors:['ep','ma','dv']},
-  {id:'i4',area:'inner',name:'Catch one automatic reaction',hint:'Notice a moment you reacted instead of chose.',xp:15,mentors:['ep','mm']},
-  {id:'i5',area:'inner',name:'Evening review — lesson from today',hint:'What went well? What changes tomorrow?',xp:20,mentors:['ma','ep','dv']},
-  {id:'w1',area:'wealth',name:'Play one game of chess',hint:'Study an opening or endgame. Think three moves ahead.',xp:20,mentors:['bm','ma']},
-  {id:'w2',area:'wealth',name:'Daily savings action',hint:'One conscious financial decision. Track your spend.',xp:20,mentors:['bm','ip']},
-  {id:'w3',area:'wealth',name:'Study one MBA or finance concept',hint:'Strategy, economics, investing — Bruce Wayne\'s intellect',xp:20,mentors:['bm','dv','ma']},
-  {id:'w4',area:'wealth',name:'Plan tomorrow tonight',hint:'Top 3 priorities before sleep. Never enter unprepared.',xp:15,mentors:['bm','mm']},
-  {id:'w5',area:'wealth',name:'Review your financial position',hint:'Know your numbers. Batman always knows his resources.',xp:15,mentors:['bm','mm','ma']},
-  {id:'c1',area:'creative',name:'Write a poem or creative passage',hint:'Strip feelings to core. One honest thing, unedited.',xp:20,mentors:['dv','ep','ma']},
-  {id:'c2',area:'creative',name:'Cook a recipe — new or perfected',hint:'Chemistry, patience, and art in one practice.',xp:20,mentors:['dv','ip','mm']},
-  {id:'c3',area:'creative',name:'Sketch, doodle, or mind-map an idea',hint:'Da Vinci filled 13,000 pages. Start with one.',xp:10,mentors:['dv','bm']},
-  {id:'s1',area:'social',name:'Meaningful time with family or friends',hint:'Fully present — no phone. Aurelius valued his people.',xp:15,mentors:['ma','ep']},
-  {id:'s2',area:'social',name:'Extract a lesson from a conversation',hint:'What did someone teach you today? Write it.',xp:15,mentors:['ma','dv']},
-  {id:'s3',area:'social',name:'Experience something new',hint:'Concert, travel, event. Life is research.',xp:20,mentors:['ma','dv','ep']},
-  {id:'s4',area:'social',name:'No social media before noon',hint:'Guard your morning. The world can wait.',xp:15,mentors:['mm','ep']}
-];
 
-const ACOLS={physical:'var(--physical)',mind:'var(--mind)',inner:'var(--inner)',wealth:'var(--wealth)',creative:'var(--creative)',social:'var(--social)'};
-const AMAX={physical:85,mind:90,inner:95,wealth:90,creative:50,social:65};
-const ANAMES={physical:'Physical',mind:'Mind',inner:'Inner',wealth:'Wealth',creative:'Creative',social:'Social'};
 
 // STATE
 function load(){try{return JSON.parse(localStorage.getItem('pm_v4'))||{};}catch(e){return{};}}
@@ -431,6 +686,9 @@ if(!S.lastDate)S.lastDate='';
 if(!S.penXP)S.penXP=0;
 if(!S.debuffed)S.debuffed={};
 if(!S.penLog)S.penLog=[];
+if(!S.goals)S.goals={};
+if(!S.todos)S.todos=[];
+if(!S.rankHistory)S.rankHistory={};
 
 const today=new Date().toISOString().slice(0,10);
 if(S.lastDate!==today){
@@ -448,6 +706,41 @@ if(S.lastDate!==today){
 function rankIdx(){let r=0;for(let i=0;i<RANKS.length;i++){if(S.totalXP>=RANKS[i].xp)r=i;}return r;}
 function mPct(id){const c=COUNCIL.find(x=>x.id===id);if(!c)return 0;return Math.min(100,Math.round(((S.mXP[id]||0)/c.max)*100));}
 
+// ── DAILY TASKS derived from goals ──
+function getTodayTasks(){
+  const tasks=[];
+  const todayDate=new Date(today);
+  const dayOfWeek=todayDate.getDay(); // 0=Sun,6=Sat
+  const monthIdx=todayDate.getMonth();
+  const dayOfMonth=todayDate.getDate();
+  // which week of month (0-indexed)
+  const weekIdx=Math.min(3,Math.floor((dayOfMonth-1)/7));
+  // day within that week (0-6)
+  const dayInWeek=(dayOfMonth-1)%7;
+  const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  Object.values(S.goals||{}).forEach(g=>{
+    if(g.month!==monthIdx) return;
+    const week=g.weeks[weekIdx];
+    if(!week) return;
+    // generate 7 daily sub-tasks for this week
+    for(let d=0;d<7;d++){
+      if(d===dayInWeek){
+        const id=`dt_${g.id}_w${weekIdx}_d${d}`;
+        tasks.push({
+          id, goalId:g.id, goalName:g.name,
+          name:`${g.name}`,
+          hint:`Week ${weekIdx+1} target: ${week.target}`,
+          mentors: Array.isArray(g.mentors) ? g.mentors : [g.mentor||'ma'],
+          xp:15,
+          weekIdx, dayIdx:d
+        });
+      }
+    }
+  });
+  return tasks;
+}
+
 function renderHero(){
   const r=rankIdx(),rk=RANKS[r],nx=RANKS[r+1];
   const xpIn=S.totalXP-rk.xp,xpN=nx?nx.xp-rk.xp:1;
@@ -455,115 +748,143 @@ function renderHero(){
   document.getElementById('xpbar').style.width=Math.min(100,Math.round((xpIn/xpN)*100))+'%';
   document.getElementById('xpnow').textContent=S.totalXP;
   document.getElementById('xpnext').textContent=nx?nx.xp:'MAX';
-  const tXP=TASKS.filter(t=>S.done[t.id]).reduce((s,t)=>s+t.xp,0);
+  const tasks=getTodayTasks();
+  const tXP=tasks.filter(t=>S.done[t.id]).reduce((s,t)=>s+t.xp,0);
   const tD=Object.keys(S.done).length,sk=Object.keys(S.skipped).length;
   document.getElementById('st1').textContent=`Today: ${tXP} XP`;
-  document.getElementById('st2').textContent=`${tD}/${TASKS.length} tasks`;
+  document.getElementById('st2').textContent=`${tD}/${tasks.length} tasks`;
   document.getElementById('st3').textContent=`Streak: ${S.streak}`;
   const s4=document.getElementById('st4');s4.style.display=sk>0?'':'none';s4.textContent=`${sk} skipped`;
-  const dc=Object.keys(S.debuffed).length,db=document.getElementById('dbar');
-  if(dc>0){
-    db.classList.add('show');
-    const names=Object.keys(S.debuffed).map(id=>TASKS.find(t=>t.id===id)?.name||'').filter(Boolean).slice(0,2);
-    document.getElementById('dtext').innerHTML=`<b>Debuff active:</b> ${dc} task${dc>1?'s':''} you skipped yesterday give <b>−20% XP</b> today: ${names.join(', ')}${dc>2?' +more':''}.`;
-  } else db.classList.remove('show');
 }
 
-function renderTasks(filter='all'){
-  const areas=['physical','mind','inner','wealth','creative','social'];
+function renderTasks(){
+  const tasks=getTodayTasks();
   const c=document.getElementById('tc');c.innerHTML='';
-  areas.forEach(area=>{
-    if(filter!=='all'&&filter!==area)return;
-    const tasks=TASKS.filter(t=>t.area===area);
-    const blk=document.createElement('div');blk.className='area-block';
-    blk.innerHTML=`<div class="area-lbl"><div class="adot" style="background:${ACOLS[area]}"></div><div class="an">${ANAMES[area]}</div><div class="aline"></div></div>`;
-    tasks.forEach(t=>{
-      const done=!!S.done[t.id],skip=!!S.skipped[t.id],deb=!!S.debuffed[t.id];
-      const xp=deb?Math.round(t.xp*0.8):t.xp;
-      const el=document.createElement('div');
-      el.className=`task ${area}${done?' done':''}${skip?' skipped':''}`;
-      el.style.setProperty('--ac',ACOLS[area]);
-      const mts=t.mentors.map(m=>`<span class="mt mt-${m}">${COUNCIL.find(c=>c.id===m)?.name.split(' ')[0]||m}</span>`).join('');
-      el.innerHTML=`
-        <div class="chk">${done?'✓':skip?'✗':''}</div>
-        <div class="tb">
-          <div class="tn">${t.name}</div>
-          <div class="th">${t.hint}</div>
-          <div class="tms">${mts}</div>
-        </div>
-        <div class="tr">
-          <div class="txp">+${xp}${deb&&!done?'<span style="color:var(--red);font-size:9px"> −20%</span>':''}</div>
-          ${!done&&!skip?`<button class="sbtn" onclick="openModal(event,'${t.id}')">SKIP</button>`:''}
-          ${skip?`<span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red)">SKIPPED</span>`:''}
-        </div>`;
-      if(!skip){
-        if(done) el.onclick=()=>undoComplete(t.id);
-        else el.onclick=()=>doComplete(t.id);
-      }
-      blk.appendChild(el);
-    });
-    c.appendChild(blk);
+
+  if(tasks.length===0){
+    const empty=document.createElement('div');
+    empty.style.cssText='text-align:center;padding:40px 0;color:var(--text3);font-style:italic;font-size:14px;line-height:1.7;';
+    empty.innerHTML='No goals set for this month.<br><span style="font-size:12px">Go to Goals → add a monthly goal → daily tasks will appear here.</span>';
+    c.appendChild(empty);
+    return;
+  }
+
+  // Date label
+  const dateEl=document.createElement('div');
+  dateEl.style.cssText='font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;margin-top:4px;';
+  const dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now=new Date(today);
+  dateEl.textContent=`${dn[now.getDay()]}, ${mn[now.getMonth()]} ${now.getDate()}`;
+  c.appendChild(dateEl);
+
+  tasks.forEach(t=>{
+    const done=!!S.done[t.id],skip=!!S.skipped[t.id];
+    const mentors=t.mentors||[t.mentor||'ma'];
+    const mColor=MENTOR_COLORS[mentors[0]]||'var(--gold)';
+    const el=document.createElement('div');
+    el.className=`task${done?' done':''}${skip?' skipped':''}`;
+    el.style.setProperty('--ac',mColor);
+    el.innerHTML=`
+      <div class="chk">${done?'✓':skip?'✗':''}</div>
+      <div class="tb">
+        <div class="tn">${t.name}</div>
+        <div class="th">${t.hint}</div>
+        <div class="tms">${mentors.map(m=>`<span class='mt mt-${m}'>${MENTOR_NAMES[m]||m}</span>`).join('')}</div>
+      </div>
+      <div class="tr">
+        <div class="txp">+${t.xp}</div>
+        ${!done&&!skip?`<button class="sbtn" onclick="openModal(event,'${t.id}')">SKIP</button>`:''}
+        ${skip?`<span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red)">SKIPPED</span>`:''}
+      </div>`;
+    if(!skip){
+      if(done) el.onclick=()=>undoComplete(t.id,t);
+      else el.onclick=()=>doComplete(t.id,t);
+    }
+    c.appendChild(el);
   });
 }
 
-function doComplete(id){
-  const t=TASKS.find(t=>t.id===id);
-  if(!t||S.done[id]||S.skipped[id])return;
-  const deb=!!S.debuffed[id];
-  const xp=deb?Math.round(t.xp*0.8):t.xp;
-  S.done[id]=true;S.totalXP+=xp;S.aXP[t.area]=(S.aXP[t.area]||0)+xp;
-  const sh=Math.round(xp/t.mentors.length);
-  t.mentors.forEach(m=>{S.mXP[m]=(S.mXP[m]||0)+sh;});
-  save();
-  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
-  renderTasks(f);renderHero();
-  const mn=t.mentors.map(m=>COUNCIL.find(c=>c.id===m)?.name.split(' ')[0]).join(' · ');
-  toast(`+${xp} XP — ${mn}`,'good');
-  const nr=rankIdx(),prevXP=S.totalXP-xp;let pr=0;
+function doComplete(id,task){
+  if(S.done[id]||S.skipped[id])return;
+  const t=task||getTodayTasks().find(x=>x.id===id);
+  if(!t)return;
+  S.done[id]=true;S.totalXP+=t.xp;
+  const _ms=t.mentors||[t.mentor||'ma'];
+  const _sh=Math.round(t.xp/_ms.length);
+  _ms.forEach(m=>{S.mXP[m]=(S.mXP[m]||0)+_sh;});
+  // also tick the week if all 7 days done (simplified: tick week when any day done)
+  checkWeekCompletion(t);
+  save();renderTasks();renderHero();
+  const mn=(t.mentors||[t.mentor||'ma']).map(m=>MENTOR_NAMES[m]||m).join(' · ');
+  toast(`+${t.xp} XP — ${mn}`,'good');
+  const nr=rankIdx(),prevXP=S.totalXP-t.xp;let pr=0;
   for(let i=0;i<RANKS.length;i++){if(prevXP>=RANKS[i].xp)pr=i;}
-  if(nr>pr)setTimeout(()=>toast(`✦ RANK UP — ${RANKS[nr].name}`,'good'),700);
+  if(nr>pr){
+    if(!S.rankHistory)S.rankHistory={};
+    S.rankHistory[nr]=today;
+    save();
+    setTimeout(()=>toast(`✦ RANK UP — ${RANKS[nr].name}`,'good'),700);
+  }
 }
 
-function undoComplete(id){
-  const t=TASKS.find(t=>t.id===id);
-  if(!t||!S.done[id])return;
-  const deb=!!S.debuffed[id];
-  const xp=deb?Math.round(t.xp*0.8):t.xp;
+function checkWeekCompletion(t){
+  // Mark the week as done once the daily task for that week is complete
+  const g=S.goals[t.goalId];
+  if(g&&!g.weeks[t.weekIdx].done){
+    // check if majority of this week's daily tasks completed (simplified: auto-tick week when 4/7 days done)
+    const weekDays=[];
+    for(let d=0;d<7;d++){
+      const did=`dt_${g.id}_w${t.weekIdx}_d${d}`;
+      if(S.done[did]) weekDays.push(d);
+    }
+    if(weekDays.length>=4){
+      g.weeks[t.weekIdx].done=true;
+    }
+  }
+}
+
+function undoComplete(id,task){
+  if(!S.done[id])return;
+  const t=task||getTodayTasks().find(x=>x.id===id);
+  if(!t)return;
   delete S.done[id];
-  S.totalXP=Math.max(0,S.totalXP-xp);
-  S.aXP[t.area]=Math.max(0,(S.aXP[t.area]||0)-xp);
-  const sh=Math.round(xp/t.mentors.length);
-  t.mentors.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-sh);});
-  save();
-  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
-  renderTasks(f);renderHero();
-  toast(`Undone — −${xp} XP removed`,'bad');
+  S.totalXP=Math.max(0,S.totalXP-t.xp);
+  const _um=t.mentors||[t.mentor||'ma'];
+  const _ush=Math.round(t.xp/_um.length);
+  _um.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-_ush);});
+  // uncheck week if was auto-checked
+  const g=S.goals[t.goalId];
+  if(g) g.weeks[t.weekIdx].done=false;
+  save();renderTasks();renderHero();
+  toast(`Undone — −${t.xp} XP removed`,'bad');
 }
 
 let pendId=null;
 function openModal(e,id){
-  e.stopPropagation();const t=TASKS.find(t=>t.id===id);if(!t)return;
+  e.stopPropagation();
+  const t=getTodayTasks().find(x=>x.id===id);if(!t)return;
   pendId=id;const pen=Math.round(t.xp*0.5);
-  document.getElementById('skip-body').innerHTML=`Skipping <b>"${t.name}"</b> will:<br><br>⚡ Deduct <b>−${pen} XP</b> from your total<br>⚡ Break your <b>current streak</b> (back to 0)<br>⚡ This task gives <b>−20% XP tomorrow</b> as a debuff<br><br><span style="color:var(--text3);font-size:12px;font-style:italic">"Do nothing that is of no use." — Musashi. But also know your real limits.</span>`;
+  document.getElementById('skip-body').innerHTML=`Skipping <b>"${t.name}"</b> will:<br><br>⚡ Deduct <b>−${pen} XP</b> from your total<br>⚡ Break your <b>current streak</b> (back to 0)<br><br><span style="color:var(--text3);font-size:12px;font-style:italic">"Do nothing that is of no use." — Musashi. But also know your real limits.</span>`;
   document.getElementById('skip-modal').classList.add('show');
 }
 function closeModal(){document.getElementById('skip-modal').classList.remove('show');pendId=null;}
 function doSkip(){
-  if(!pendId)return;const t=TASKS.find(t=>t.id===pendId);if(!t){closeModal();return;}
+  if(!pendId)return;
+  const t=getTodayTasks().find(x=>x.id===pendId);if(!t){closeModal();return;}
   const pen=Math.round(t.xp*0.5);
   S.skipped[t.id]=true;S.totalXP=Math.max(0,S.totalXP-pen);S.penXP=(S.penXP||0)+pen;
   S.streak=0;S.penLog.unshift({date:today,type:`Skipped: ${t.name}`,xp:-pen});
   if(S.penLog.length>20)S.penLog=S.penLog.slice(0,20);
-  save();closeModal();
-  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
-  renderTasks(f);renderHero();
-  toast(`−${pen} XP · Streak reset · Debuff tomorrow`,'bad');
+  save();closeModal();renderTasks();renderHero();
+  toast(`−${pen} XP · Streak reset`,'bad');
 }
 
 function renderProgress(){
-  const done=Object.keys(S.done).length;
+  const tasks=getTodayTasks();
+  const done=tasks.filter(t=>S.done[t.id]).length;
   document.getElementById('p1').textContent=S.totalXP;
-  document.getElementById('p2').textContent=`${done}/${TASKS.length}`;
+  document.getElementById('p2').textContent=`${done}/${tasks.length}`;
   document.getElementById('p3').textContent=S.penXP||0;
   // BECOME THEM
   const bc=document.getElementById('bec-cards');bc.innerHTML='';
@@ -575,11 +896,11 @@ function renderProgress(){
     d.innerHTML=`<div class="bec-top"><div class="bec-av" style="color:${c.col};border-color:${c.bc};background:var(--bg4)">${c.ini}</div><div class="bec-info"><div class="bec-name">${c.name}</div><div class="bec-role">${c.role}</div></div><div class="bec-pct${comp?' done':''}">${pct}%</div></div><div class="bec-btrack"><div class="bec-bfill" style="background:${c.col};width:${pct}%"></div></div><div class="bec-traits">${trs}</div>${comp?`<div class="bec-done-lbl">✦ Transformation complete — you have become ${c.name.split(' ')[0]}</div>`:''}`;
     bc.appendChild(d);
   });
-  // area bars
-  Object.keys(AMAX).forEach(a=>{
-    const xp=S.aXP[a]||0,pct=Math.min(100,Math.round((xp/AMAX[a])*100));
+  // mentor xp bars (replacing area bars)
+  ['physical','mind','inner','wealth','creative','social'].forEach(a=>{
     const b=document.getElementById('ab-'+a),v=document.getElementById('av-'+a);
-    if(b)b.style.width=pct+'%';if(v)v.textContent=xp;
+    const xp=S.aXP[a]||0;
+    if(b)b.style.width=Math.min(100,xp/5)+'%';if(v)v.textContent=xp;
   });
   // penalty log
   const pl=document.getElementById('pen-log'),ps=document.getElementById('pen-sec');
@@ -591,53 +912,424 @@ function renderProgress(){
 
 function renderCouncil(){
   const cl=document.getElementById('cl');cl.innerHTML='';
+
   COUNCIL.forEach(c=>{
-    const xp=S.mXP[c.id]||0,pct=mPct(c.id);
-    const d=document.createElement('div');d.className='cc';
-    const trs=c.traits.map(t=>`<span class="trtag">${t}</span>`).join('');
-    d.innerHTML=`<div class="ct"><div class="cav" style="color:${c.col};border-color:${c.bc};background:var(--bg4)">${c.ini}</div><div><div class="cn">${c.name}</div><div class="cr">${c.role}</div></div></div><div class="cq">${c.quote}</div><div class="cw">${c.when}</div><div class="ctrs">${trs}</div><div class="cxr"><div class="cxb"><div class="cxf" style="background:${c.col};width:${pct}%"></div></div><div class="cxn">${pct}% · ${xp} XP</div></div>`;
-    cl.appendChild(d);
+    const xp=S.mXP[c.id]||0;
+    const pct=c.max>0?Math.round((xp/c.max)*100):0;
+    const isComplete=pct>=100;
+    const isTransforming=xp>0;
+
+    // Current detail stage (fine-grained)
+    const stages=c.stages||[];
+    let curStageIdx=0;
+    for(let i=0;i<stages.length;i++){if(xp>=stages[i].at)curStageIdx=i;}
+    const curStage=stages[curStageIdx];
+    const nextStage=stages[curStageIdx+1]||null;
+    const stageXP=xp-curStage.at;
+    const stageTotal=nextStage?nextStage.at-curStage.at:Math.max(1,curStage.at);
+    const stageBarPct=nextStage?Math.min(100,Math.round((stageXP/stageTotal)*100)):100;
+
+    // Mastery phase (5-stage Greene framework)
+    const mstage=getMasteryStage(pct);
+    const mstageIdx=MASTERY_STAGES.indexOf(mstage);
+    const nextMstage=MASTERY_STAGES[mstageIdx+1]||null;
+
+    const card=document.createElement('div');
+    card.className=`council-card${isComplete?' complete':isTransforming?' transforming':''}`;
+
+    // Build the SVG portrait
+    const svgFigure=buildSilhouette(pct,c.col,c.id);
+
+    // Detail stage timeline (collapsed to just current + nearby)
+    const stagesHtml=stages.map((s,i)=>{
+      const reached=xp>=s.at;
+      const isCur=i===curStageIdx;
+      return `<div class="cc-stage-row">
+        <div class="cc-stage-dot${reached?' reached':''}${isCur?' current':''}" style="${reached?'background:'+c.col+';border-color:'+c.col+';':''}">
+          ${reached?'✓':''}
+        </div>
+        <div class="cc-stage-info">
+          <div class="cc-sname${reached?' reached':''}${isCur?' current-stage':''}" style="${isCur?'color:'+c.col+';':''}">${s.name}</div>
+          <div class="cc-sdesc${reached?' reached':''}">${s.desc}</div>
+          <div class="cc-sat">${s.at===0?'Starting point':s.at+' XP'}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    // 5 mastery phase dots
+    const mPhaseHtml=MASTERY_STAGES.map((ms,i)=>{
+      const reached=pct>=ms.pct;
+      const isCur=ms===mstage;
+      return `<div class="cc-mphase-dot${reached?' reached':''}${isCur?' current':''}" style="${reached?'background:'+c.col+';':''}${isCur?'box-shadow:0 0 0 2px '+c.col+'33;':''}" title="${ms.name}"></div>`;
+    }).join('');
+
+    const nextStageText=nextStage
+      ?`${stageXP}/${stageTotal} XP toward <em style="color:${c.col}">${nextStage.name}</em>`
+      :`Fully transformed — ${xp} XP`;
+
+    card.innerHTML=`
+      <div class="cc-hero" style="background:linear-gradient(180deg,rgba(${hexToRgb(c.col)},${0.03+Math.min(1,pct/100)*0.1}) 0%,transparent 80%)">
+        <div class="cc-figure-wrap">
+          ${svgFigure}
+        </div>
+        <div class="cc-stage-label">${mstage.phase}</div>
+        <div class="cc-mastery-stage" style="color:${isTransforming?c.col:'var(--text3)'}">${mstage.pct===0?c.name:mstage.name}</div>
+        <div class="cc-role">${c.name} · ${c.role}</div>
+        <div class="cc-stage-desc">${mstage.desc}</div>
+        <div class="cc-mphase-row">${mPhaseHtml}</div>
+        <div class="cc-prog-wrap">
+          <div class="cc-prog-bar"><div class="cc-prog-fill" style="background:${c.col};width:${Math.min(100,pct)}%"></div></div>
+          <div class="cc-prog-pct" style="color:${c.col}">${pct}%</div>
+        </div>
+        <div class="cc-xp-label">${nextStageText}</div>
+        ${isComplete?`<div style="font-family:'Cinzel',serif;font-size:11px;color:var(--inner);margin-top:8px;letter-spacing:0.08em">✦ You have become ${c.name.split(' ')[0]} ✦</div>`:''}
+      </div>
+      <div class="cc-quote">${c.quote}</div>
+      <div class="cc-stages">${stagesHtml}</div>`;
+
+    cl.appendChild(card);
   });
 }
+
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16);
+  const g=parseInt(hex.slice(3,5),16);
+  const b=parseInt(hex.slice(5,7),16);
+  return `${r},${g},${b}`;
+}
+
+
+// ── MASTERY STAGES (Robert Greene framework) ──
+const MASTERY_STAGES=[
+  {pct:0,  name:'Deep Observation',    phase:'Apprenticeship Kickoff',
+   desc:'Shadow the master silently. Absorb every nuance, ritual, and flaw. Build your reality map through raw exposure — discard illusions.'},
+  {pct:25, name:'Relentless Skill Drill', phase:'Apprenticeship Core',
+   desc:'10,000+ hours of deliberate practice. Break skills into micro-moves, grind feedback loops, experiment boldly. Humility fuels the fire; shortcuts betray.'},
+  {pct:50, name:'Mentorship Fusion',   phase:'Creative Pivot',
+   desc:'Steal power from the master — internalize their spirit, not just techniques. Transition to independence: intuition sparks, reason tempers wild ideas.'},
+  {pct:75, name:'Dimensional Flow',    phase:'Creative Peak',
+   desc:'Holistic fingertip feel emerges. See the interconnected web of your field. Innovate by bending conventional rules into original weapons.'},
+  {pct:100,name:'Timeless Mastery',   phase:'The Arrival',
+   desc:'Effortless genius. Intuition merges with the universal — create breakthroughs that redefine reality. You mentor the next wave. The cycle renews.'},
+];
+
+function getMasteryStage(pct){
+  let s=MASTERY_STAGES[0];
+  for(let i=MASTERY_STAGES.length-1;i>=0;i--){
+    if(pct>=MASTERY_STAGES[i].pct){s=MASTERY_STAGES[i];break;}
+  }
+  return s;
+}
+
+function buildSilhouette(pct, col, mentorId){
+  const intensity=Math.min(1,pct/100);
+  const s=`rgba(255,255,255,${0.06+intensity*0.18})`;  // stroke opacity
+  const sc=intensity>0.15?col:s;
+  const sw=(0.7+intensity*1.1).toFixed(1);
+  const glow=pct>=75?`<circle cx="50" cy="55" r="46" fill="none" stroke="${col}" stroke-width="0.5" opacity="${(intensity*0.35).toFixed(2)}" stroke-dasharray="${pct>=100?'none':'5 4'}"/>`:'';
+  const star=pct>=100?`<text x="50" y="10" text-anchor="middle" font-size="11" fill="${col}" opacity="0.9">✦</text>`:'';
+
+  // Per-mentor minimal portrait SVGs (100×110 viewBox)
+  const portraits={
+    ma:`<!-- Marcus Aurelius: laurel wreath, Roman toga, philosophical bearing -->
+      ${glow}
+      <!-- Laurel wreath -->
+      <path d="M30 28 Q28 22 32 18 Q36 15 40 17 Q44 15 48 18 Q52 22 50 28" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M32 26 Q30 20 35 17" fill="none" stroke="${sc}" stroke-width="0.8" opacity="${0.4+intensity*0.5}"/>
+      <path d="M68 26 Q70 20 65 17" fill="none" stroke="${sc}" stroke-width="0.8" opacity="${0.4+intensity*0.5}"/>
+      <!-- Head -->
+      <ellipse cx="50" cy="32" rx="13" ry="14" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Eyes — contemplative -->
+      <line x1="43" y1="31" x2="46" y2="31" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <line x1="54" y1="31" x2="57" y2="31" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <!-- Beard -->
+      <path d="M40 40 Q44 46 50 47 Q56 46 60 40" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M44 44 Q50 52 56 44" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.3+intensity*0.5}"/>
+      <!-- Toga drape -->
+      <path d="M34 48 Q22 58 24 78 Q30 85 50 86 Q70 85 76 78 Q78 58 66 48" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <path d="M34 48 Q38 60 36 80" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.3+intensity*0.4}"/>
+      <path d="M66 48 Q60 56 62 78" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.3+intensity*0.4}"/>
+      <!-- Toga fold lines -->
+      <path d="M38 54 Q50 60 64 54" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.45}"/>
+      <path d="M36 66 Q50 72 66 66" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.35}"/>
+      <!-- Scroll in hand -->
+      <rect x="24" y="68" width="10" height="14" rx="2" fill="none" stroke="${sc}" stroke-width="${sw}" opacity="${0.5+intensity*0.4}"/>
+      <line x1="26" y1="72" x2="32" y2="72" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.5}"/>
+      <line x1="26" y1="75" x2="32" y2="75" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.5}"/>
+      ${star}`,
+
+    kb:`<!-- Kobe Bryant: jersey silhouette, athletic stance, mamba -->
+      ${glow}
+      <!-- Head -->
+      <ellipse cx="50" cy="28" rx="12" ry="13" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Determined eyes -->
+      <line x1="43" y1="27" x2="46" y2="27" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <line x1="54" y1="27" x2="57" y2="27" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <!-- Strong jaw -->
+      <path d="M42 33 Q50 37 58 33" fill="none" stroke="${sc}" stroke-width="0.8" stroke-linecap="round" opacity="${0.4+intensity*0.4}"/>
+      <!-- Jersey / shoulders — athletic V -->
+      <path d="M38 42 Q26 46 24 56 Q22 70 24 84 L76 84 Q78 70 76 56 Q74 46 62 42 Q56 40 50 41 Q44 40 38 42Z" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Jersey number area -->
+      <rect x="40" y="54" width="20" height="18" rx="1" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${0.3+intensity*0.4}"/>
+      <!-- Arms stretched — ball-handling pose -->
+      <path d="M24 52 Q14 56 10 68 Q11 72 14 70 Q17 60 24 56" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <path d="M76 52 Q86 56 90 68 Q89 72 86 70 Q83 60 76 56" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Basketball -->
+      <circle cx="86" cy="70" r="8" fill="none" stroke="${sc}" stroke-width="${sw}" opacity="${0.5+intensity*0.4}"/>
+      <path d="M79 68 Q83 70 79 72" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.5}"/>
+      <path d="M84 63 Q86 67 84 71" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${intensity*0.5}"/>
+      <!-- Neck -->
+      <rect x="46" y="40" width="8" height="5" rx="2" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      ${star}`,
+
+    dv:`<!-- Leonardo da Vinci: long hair, artist pose, notebook -->
+      ${glow}
+      <!-- Long flowing hair -->
+      <path d="M36 24 Q30 18 32 10 Q38 6 50 8 Q62 6 68 10 Q70 18 64 24" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M36 24 Q32 34 34 44" fill="none" stroke="${sc}" stroke-width="0.8" opacity="${0.35+intensity*0.45}"/>
+      <path d="M64 24 Q68 34 66 44" fill="none" stroke="${sc}" stroke-width="0.8" opacity="${0.35+intensity*0.45}"/>
+      <!-- Head -->
+      <ellipse cx="50" cy="27" rx="13" ry="14" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Wise eyes -->
+      <path d="M40 26 Q43 24 46 26" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M54 26 Q57 24 60 26" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <!-- Long beard -->
+      <path d="M40 36 Q44 42 50 44 Q56 42 60 36" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M44 42 Q48 50 50 54 Q52 50 56 42" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.3+intensity*0.5}"/>
+      <!-- Robe body -->
+      <path d="M36 46 Q24 52 22 74 Q22 84 50 86 Q78 84 78 74 Q76 52 64 46" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Notebook held open -->
+      <rect x="54" y="60" width="18" height="22" rx="2" fill="none" stroke="${sc}" stroke-width="${sw}" opacity="${0.5+intensity*0.4}"/>
+      <line x1="54" y1="60" x2="54" y2="82" stroke="${sc}" stroke-width="0.7" opacity="${intensity*0.5}"/>
+      <line x1="56" y1="66" x2="70" y2="66" stroke="${sc}" stroke-width="0.5" opacity="${intensity*0.4}"/>
+      <line x1="56" y1="70" x2="70" y2="70" stroke="${sc}" stroke-width="0.5" opacity="${intensity*0.4}"/>
+      <line x1="56" y1="74" x2="66" y2="74" stroke="${sc}" stroke-width="0.5" opacity="${intensity*0.4}"/>
+      <!-- Quill pen in other hand -->
+      <line x1="28" y1="56" x2="34" y2="76" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round" opacity="${0.5+intensity*0.4}"/>
+      <path d="M28 56 Q24 52 26 48 Q30 50 28 56" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.4+intensity*0.4}"/>
+      ${star}`,
+
+    mm:`<!-- Miyamoto Musashi: topknot, two swords crossed, austere stance -->
+      ${glow}
+      <!-- Topknot -->
+      <line x1="50" y1="16" x2="50" y2="8" stroke="${sc}" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="50" cy="16" rx="4" ry="3" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Head — strong and spare -->
+      <ellipse cx="50" cy="28" rx="12" ry="13" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Austere eyes -->
+      <line x1="43" y1="27" x2="46" y2="27" stroke="${sc}" stroke-width="${(parseFloat(sw)+0.3).toFixed(1)}" stroke-linecap="round"/>
+      <line x1="54" y1="27" x2="57" y2="27" stroke="${sc}" stroke-width="${(parseFloat(sw)+0.3).toFixed(1)}" stroke-linecap="round"/>
+      <!-- Kimono — angular, minimal -->
+      <path d="M38 42 Q26 48 24 64 Q24 80 50 84 Q76 80 76 64 Q74 48 62 42" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Kimono collar V -->
+      <path d="M42 42 Q50 52 58 42" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <!-- Crossed swords — two swords, Niten Ichi-ryu -->
+      <line x1="18" y1="50" x2="54" y2="90" stroke="${sc}" stroke-width="${(parseFloat(sw)+0.5).toFixed(1)}" stroke-linecap="round" opacity="${0.6+intensity*0.4}"/>
+      <line x1="14" y1="48" x2="18" y2="50" stroke="${sc}" stroke-width="1.2" stroke-linecap="round" opacity="${intensity*0.5}"/>
+      <line x1="82" y1="50" x2="46" y2="90" stroke="${sc}" stroke-width="${(parseFloat(sw)+0.5).toFixed(1)}" stroke-linecap="round" opacity="${0.6+intensity*0.4}"/>
+      <line x1="86" y1="48" x2="82" y2="50" stroke="${sc}" stroke-width="1.2" stroke-linecap="round" opacity="${intensity*0.5}"/>
+      ${star}`,
+
+    ep:`<!-- Epictetus: slave chains, stoic gaze, open hands -->
+      ${glow}
+      <!-- Head -->
+      <ellipse cx="50" cy="27" rx="12" ry="13" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Calm, steady eyes -->
+      <circle cx="44" cy="26" r="1.5" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <circle cx="56" cy="26" r="1.5" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Simple tunic -->
+      <path d="M38 42 Q26 50 26 70 Q26 84 50 86 Q74 84 74 70 Q74 50 62 42" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Tunic seam line -->
+      <line x1="50" y1="42" x2="50" y2="86" stroke="${sc}" stroke-width="0.5" opacity="${0.2+intensity*0.35}"/>
+      <!-- Arms raised open — Stoic acceptance -->
+      <path d="M26 52 Q14 48 10 58 Q12 64 16 62 Q20 54 26 54" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <path d="M74 52 Q86 48 90 58 Q88 64 84 62 Q80 54 74 54" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Open hands — palms up -->
+      <path d="M10 58 Q8 62 10 65 Q13 67 16 65" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round" opacity="${0.5+intensity*0.4}"/>
+      <path d="M90 58 Q92 62 90 65 Q87 67 84 65" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round" opacity="${0.5+intensity*0.4}"/>
+      <!-- Chain on ankle (freed slave) — faint at low pct, fades away -->
+      <path d="M36 86 Q34 92 36 96" fill="none" stroke="${sc}" stroke-width="0.8" stroke-dasharray="2 2" opacity="${Math.max(0,0.5-intensity*0.5)}"/>
+      <!-- Inner citadel symbol -->
+      <rect x="42" y="56" width="16" height="16" rx="2" fill="none" stroke="${sc}" stroke-width="0.6" opacity="${0.2+intensity*0.5}"/>
+      <rect x="45" y="59" width="10" height="10" rx="1" fill="none" stroke="${sc}" stroke-width="0.5" opacity="${intensity*0.4}"/>
+      ${star}`,
+
+    ip:`<!-- Ippo Makunouchi: boxing gloves, fighting stance, rising fist -->
+      ${glow}
+      <!-- Head with headgear outline -->
+      <ellipse cx="50" cy="27" rx="13" ry="14" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Headband -->
+      <path d="M37 22 Q50 20 63 22" fill="none" stroke="${sc}" stroke-width="1.8" stroke-linecap="round" opacity="${0.5+intensity*0.4}"/>
+      <!-- Determined eyes -->
+      <path d="M40 27 Q43 25 46 27" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <path d="M54 27 Q57 25 60 27" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linecap="round"/>
+      <!-- Athletic body — forward lean -->
+      <path d="M38 42 Q28 48 26 60 Q25 74 28 84 L72 84 Q75 74 74 60 Q72 48 62 42 Q56 40 50 41 Q44 40 38 42Z" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Fighting stance neck -->
+      <rect x="46" y="40" width="8" height="5" rx="2" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Left boxing glove raised (guard) -->
+      <path d="M26 52 Q14 48 10 58 Q10 68 18 70 Q24 70 26 62" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <ellipse cx="14" cy="64" rx="6" ry="8" fill="none" stroke="${sc}" stroke-width="${sw}" opacity="${0.55+intensity*0.4}"/>
+      <!-- Right fist punching forward -->
+      <path d="M74 50 Q84 44 90 50 Q92 60 86 64 Q80 66 74 60" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <ellipse cx="88" cy="57" rx="6" ry="8" fill="none" stroke="${sc}" stroke-width="${sw}" opacity="${0.55+intensity*0.4}"/>
+      <!-- Impact lines on right glove -->
+      <line x1="94" y1="50" x2="98" y2="46" stroke="${sc}" stroke-width="0.8" opacity="${intensity*0.6}" stroke-linecap="round"/>
+      <line x1="96" y1="56" x2="100" y2="55" stroke="${sc}" stroke-width="0.8" opacity="${intensity*0.6}" stroke-linecap="round"/>
+      ${star}`,
+
+    bm:`<!-- Batman: cowl, cape spread, detective silhouette -->
+      ${glow}
+      <!-- Cape spread wide -->
+      <path d="M50 82 Q30 70 10 80 Q8 60 20 46 Q30 36 38 40" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <path d="M50 82 Q70 70 90 80 Q92 60 80 46 Q70 36 62 40" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <!-- Cape interior lines -->
+      <path d="M40 46 Q34 58 26 72" fill="none" stroke="${sc}" stroke-width="0.5" opacity="${0.2+intensity*0.35}"/>
+      <path d="M60 46 Q66 58 74 72" fill="none" stroke="${sc}" stroke-width="0.5" opacity="${0.2+intensity*0.35}"/>
+      <!-- Body -->
+      <path d="M38 40 Q30 46 30 62 L70 62 Q70 46 62 40 Z" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- Bat symbol on chest -->
+      <path d="M40 52 Q44 48 50 50 Q56 48 60 52 Q56 56 50 54 Q44 56 40 52Z" fill="none" stroke="${sc}" stroke-width="0.7" opacity="${0.35+intensity*0.5}"/>
+      <!-- Cowl — iconic pointed ears -->
+      <path d="M36 32 L30 18 L38 26" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <path d="M64 32 L70 18 L62 26" fill="none" stroke="${sc}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <!-- Head within cowl -->
+      <path d="M36 32 Q36 18 50 18 Q64 18 64 32 Q64 40 50 42 Q36 40 36 32Z" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <!-- White detective eyes -->
+      <ellipse cx="43" cy="30" rx="4" ry="2.5" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <ellipse cx="57" cy="30" rx="4" ry="2.5" fill="none" stroke="${sc}" stroke-width="${sw}"/>
+      <line x1="41" y1="30" x2="45" y2="30" stroke="${sc}" stroke-width="1" opacity="${0.4+intensity*0.4}" stroke-linecap="round"/>
+      <line x1="55" y1="30" x2="59" y2="30" stroke="${sc}" stroke-width="1" opacity="${0.4+intensity*0.4}" stroke-linecap="round"/>
+      ${star}`
+  };
+
+  const portrait=portraits[mentorId]||portraits['ma'];
+  return `<svg class="cc-figure" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+    ${portrait}
+  </svg>`;
+}
+
+
 
 function renderRanks(){
   const rl=document.getElementById('rl');rl.innerHTML='';
   const r=rankIdx();
-  RANKS.forEach((rk,i)=>{
-    const cur=i===r,lk=S.totalXP<rk.xp;
-    const pct=Math.min(100,Math.round((S.totalXP/Math.max(rk.xp,1))*100));
-    const d=document.createElement('div');d.className=`rkcard${cur?' cur':''}${lk?' lk':''}`;
-    const uls=rk.unlocks.map(u=>`<div class="uli"><div class="ulicon" style="color:${u.cls==='ty-trial'?'#4ad0a0':u.cls==='ty-ability'?'#9888e8':u.cls==='ty-penalty'?'var(--red)':'#6aafef'}">${u.icon}</div><div><div class="ulname">${u.name}</div><div class="uldesc">${u.desc}</div><span class="ultype ${u.cls}">${u.type.toUpperCase()}</span></div></div>`).join('');
-    d.innerHTML=`<div class="rkh"><div class="rkr">${ROMANS[i]}</div><div class="rknw"><div class="rkn">${rk.name}</div><div class="rkq">${rk.xp.toLocaleString()} XP required</div></div>${cur?'<div class="rkcbadge">CURRENT</div>':''}</div><div class="rkbm"><div class="rkbf" style="width:${pct}%"></div></div><div class="rkul"><div class="rkulh">Unlocks</div>${uls}</div>`;
+  const rk=RANKS[r],nx=RANKS[r+1];
+
+  // ── CURRENT RANK HERO ──
+  const hero=document.createElement('div');
+  hero.className='rk-hero';
+  const xpIn=S.totalXP-rk.xp;
+  const xpNeed=nx?nx.xp-rk.xp:0;
+  const heroPct=nx?Math.round((xpIn/xpNeed)*100):100;
+  hero.innerHTML=`
+    <div class="rk-sigil-big" style="color:${RANK_COLORS[r]}">${RANK_SIGILS[r]}</div>
+    <div class="rk-hero-roman">RANK ${ROMANS[r]}</div>
+    <div class="rk-hero-name">${rk.name}</div>
+    <div class="rk-hero-desc">${RANK_DESC[r]}</div>
+    <div class="xp-track" style="margin-bottom:7px"><div class="xp-fill" style="width:${heroPct}%;background:${RANK_COLORS[r]}"></div></div>
+    <div class="rk-hero-xp">${S.totalXP.toLocaleString()} XP total${nx?' · '+xpIn.toLocaleString()+' / '+xpNeed.toLocaleString()+' toward '+nx.name:''}${r===6?' · Maximum rank achieved':''}</div>`;
+  rl.appendChild(hero);
+
+  // ── NEXT RANK: WHAT TO DO + DAYS EST ──
+  if(nx){
+    const xpLeft=nx.xp-S.totalXP;
+    // estimate avg daily XP from streak data (default 15 XP/day if no data)
+    const avgDaily=S.streak>1&&S.totalXP>0?Math.round(S.totalXP/Math.max(S.streak,1)):15;
+    const daysLeft=avgDaily>0?Math.ceil(xpLeft/avgDaily):null;
+
+    const box=document.createElement('div');
+    box.className='rk-next-box';
+    box.innerHTML=`
+      <div class="rk-next-title">To reach ${nx.name}</div>
+      <div class="rk-next-row"><div class="rk-next-icon">◆</div><div class="rk-next-text"><b>${xpLeft.toLocaleString()} XP</b> still needed</div></div>
+      <div class="rk-next-row"><div class="rk-next-icon">◈</div><div class="rk-next-text">Complete your daily goal tasks — each earns <b>+15 XP</b></div></div>
+      <div class="rk-next-row"><div class="rk-next-icon">✦</div><div class="rk-next-text">At your current pace: <b>${daysLeft?daysLeft+' days':' keep building your streak'}</b>${daysLeft?' (avg '+avgDaily+' XP/day)':''}</div></div>
+      <div class="rk-next-row"><div class="rk-next-icon">⬡</div><div class="rk-next-text">Unlocks: <b>${nx.unlocks.slice(0,2).map(u=>u.name).join(', ')}${nx.unlocks.length>2?' +more':''}</b></div></div>`;
+    rl.appendChild(box);
+  }
+
+  // ── RANK HISTORY ──
+  const achieved=Object.entries(S.rankHistory||{}).sort((a,b)=>a[0]-b[0]);
+  if(achieved.length>0){
+    const hist=document.createElement('div');
+    hist.className='rk-history';
+    hist.innerHTML=`<div class="rk-history-title">Rank History</div>`+
+      achieved.map(([ri,date])=>{
+        const i=parseInt(ri);
+        const d=new Date(date);
+        const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const fmt=`${mn[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+        return `<div class="rk-hist-item">
+          <div class="rk-hist-sigil" style="color:${RANK_COLORS[i]}">${RANK_SIGILS[i]}</div>
+          <div class="rk-hist-info">
+            <div class="rk-hist-name">${RANKS[i].name}</div>
+            <div class="rk-hist-date">Achieved ${fmt}</div>
+          </div>
+          <div class="rk-hist-xp">${RANKS[i].xp.toLocaleString()} XP</div>
+        </div>`;
+      }).join('');
+    rl.appendChild(hist);
+  }
+
+  // ── ALL RANKS LIST ──
+  const allTitle=document.createElement('div');
+  allTitle.className='rk-all-title';
+  allTitle.textContent='All Ranks';
+  rl.appendChild(allTitle);
+
+  RANKS.forEach((rk2,i)=>{
+    const cur=i===r,lk=S.totalXP<rk2.xp;
+    const pct=Math.min(100,Math.round((S.totalXP/Math.max(rk2.xp,1))*100));
+    const d=document.createElement('div');
+    d.className=`rkcard${cur?' cur':''}${lk?' lk':''}`;
+    const uls=rk2.unlocks.map(u=>`<div class="uli"><div class="ulicon" style="color:${u.cls==='ty-trial'?'#4ad0a0':u.cls==='ty-ability'?'#9888e8':u.cls==='ty-penalty'?'var(--red)':'#6aafef'}">${u.icon}</div><div><div class="ulname">${u.name}</div><div class="uldesc">${u.desc}</div><span class="ultype ${u.cls}">${u.type.toUpperCase()}</span></div></div>`).join('');
+    const achDate=S.rankHistory?.[i];
+    const achHtml=achDate?`<div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--inner);margin-top:3px">Achieved ${achDate}</div>`:'';
+    d.innerHTML=`
+      <div class="rkh">
+        <div class="rk-card-sigil" style="color:${RANK_COLORS[i]}">${RANK_SIGILS[i]}</div>
+        <div class="rknw">
+          <div class="rkn">${rk2.name}</div>
+          <div class="rkq">${ROMANS[i]} · ${rk2.xp.toLocaleString()} XP${achDate?' · ✓':lk?' · Locked':' · Current'}</div>
+          ${achHtml}
+        </div>
+        ${cur?'<div class="rkcbadge">NOW</div>':''}
+      </div>
+      <div class="rkbm"><div class="rkbf" style="width:${pct}%;background:${RANK_COLORS[i]}"></div></div>
+      <div class="rkul"><div class="rkulh">Unlocks</div>${uls}</div>`;
     rl.appendChild(d);
   });
+
+  const spacer=document.createElement('div');spacer.style.height='12px';
+  rl.appendChild(spacer);
 }
 
-function filt(area,btn){
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');renderTasks(area);
-}
+// filt removed
+
 
 function go(id,btn){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('screen-'+id).classList.add('active');btn.classList.add('active');
-  if(id==='progress')renderProgress();
-  if(id==='council')renderCouncil();
-  if(id==='ranks')renderRanks();
+  if(id==='today'){renderTasks();renderHero();}
+  if(id==='progress'){renderProgress();}
+  if(id==='council'){renderCouncil();}
+  if(id==='ranks'){renderRanks();}
+  if(id==='goals'){renderGoalMonths();renderGoalList();}
+  if(id==='todo'){renderTodos();}
 }
 
 function resetDay(){
   if(!confirm('Reset today? XP earned today will be deducted.'))return;
-  TASKS.filter(t=>S.done[t.id]).forEach(t=>{
-    S.totalXP=Math.max(0,S.totalXP-t.xp);S.aXP[t.area]=Math.max(0,(S.aXP[t.area]||0)-t.xp);
-    const sh=Math.round(t.xp/t.mentors.length);
-    t.mentors.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-sh);});
+  const tasks=getTodayTasks();
+  tasks.filter(t=>S.done[t.id]).forEach(t=>{
+    S.totalXP=Math.max(0,S.totalXP-t.xp);
+    (t.mentors||[t.mentor||'ma']).forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-Math.round(t.xp/(t.mentors||[m]).length));});
+    const g=S.goals[t.goalId];if(g)g.weeks[t.weekIdx].done=false;
   });
   S.done={};S.skipped={};save();
-  renderTasks('all');renderHero();renderProgress();
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
-  document.querySelector('.ftab').classList.add('active');
+  renderTasks();renderHero();renderProgress();
   toast('Day reset. Begin again.','good');
 }
 
@@ -647,7 +1339,7 @@ function toast(msg,type='good'){
   el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2400);
 }
 
-renderHero();renderTasks('all');
+renderHero();renderTasks();
 
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
@@ -656,6 +1348,322 @@ if('serviceWorker' in navigator){
       .catch(e=>console.log('SW failed:',e));
   });
 }
+
+
+// ═══ GOALS SYSTEM ═══
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+
+let selMonth = new Date().getMonth(); // 0-indexed
+let editingGoalId = null;
+let selMentors = [];
+
+function getGoals(){ return S.goals || {}; }
+function getTodos(){ return S.todos || []; }
+
+function renderGoalMonths(){
+  const el = document.getElementById('goal-months');
+  if(!el) return;
+  el.innerHTML = MONTHS.map((m,i) =>
+    `<button class="gm-tab${i===selMonth?' active':''}" onclick="selectMonth(${i})">${m}</button>`
+  ).join('');
+}
+
+function selectMonth(i){
+  selMonth = i;
+  renderGoalMonths();
+  renderGoalList();
+}
+
+function renderGoalList(){
+  const el = document.getElementById('goal-list');
+  if(!el) return;
+  const goals = getGoals();
+  const monthGoals = Object.values(goals).filter(g => g.month === selMonth);
+
+  el.innerHTML = '';
+
+  // Add button
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-goal-btn';
+  addBtn.innerHTML = '+ Add Goal for ' + MONTHS[selMonth];
+  addBtn.onclick = () => openGoalModal();
+  el.appendChild(addBtn);
+
+  if(monthGoals.length === 0){
+    const empty = document.createElement('div');
+    empty.style.cssText = 'text-align:center;padding:30px 0;color:var(--text3);font-style:italic;font-size:13px;';
+    empty.textContent = 'No goals set for ' + MONTHS[selMonth] + '. Add one above.';
+    el.appendChild(empty);
+    return;
+  }
+
+  monthGoals.forEach(g => {
+    const doneWeeks = g.weeks.filter(w => w.done).length;
+    const pct = Math.round((doneWeeks / g.weeks.length) * 100);
+    const complete = pct === 100;
+    const gMentors=Array.isArray(g.mentors)?g.mentors:[g.mentor||'ma'];
+    const mColor = MENTOR_COLORS[gMentors[0]] || 'var(--gold)';
+    const mDotsHtml=gMentors.map(m=>`<div class='goal-mentor-dot' style='background:${MENTOR_COLORS[m]||"var(--gold)"}'></div>`).join('');
+
+    const card = document.createElement('div');
+    card.className = 'goal-card' + (complete ? ' complete' : '');
+
+    const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const todayDate=new Date(today);
+    const curMonth=todayDate.getMonth();
+    const curDay=todayDate.getDate();
+    const weeksHtml = g.weeks.map((w,wi) => {
+      // show days for this week
+      const weekStart=wi*7+1; // day of month
+      const daysHtml=dayNames.map((dn,di)=>{
+        const dayOfMonth=weekStart+di;
+        if(dayOfMonth>31) return '';
+        const did=`dt_${g.id}_w${wi}_d${di}`;
+        const isDone=!!S.done[did];
+        const isSkipped=!!S.skipped[did];
+        const isCur=curMonth===g.month&&curDay===dayOfMonth;
+        return `<div class="day-pill${isDone?' dp-done':''}${isSkipped?' dp-skip':''}${isCur?' dp-cur':''}" title="${dn} ${dayOfMonth}">${dn[0]}</div>`;
+      }).join('');
+      return `<div class="goal-week${w.done?' done':''}" style="flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;align-items:center;gap:8px;width:100%" onclick="toggleWeek('${g.id}',${wi})">
+          <div class="gw-chk">${w.done?'✓':''}</div>
+          <div class="gw-label">Week ${wi+1}</div>
+          <div class="gw-target">${w.target}</div>
+        </div>
+        <div class="day-pills">${daysHtml}</div>
+      </div>`;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="goal-card-top">
+        <div style='display:flex;gap:3px'>${mDotsHtml}</div>
+        <div style="flex:1">
+          <div class="goal-name">${g.name}</div>
+          <div class="goal-target-lbl">Target: ${g.target}${complete ? ' ✦ Complete' : ''}</div>
+        </div>
+        <div class="goal-actions">
+          <button class="goal-edit-btn" onclick="openGoalModal('${g.id}')">Edit</button>
+          <button class="goal-del-btn" onclick="deleteGoal('${g.id}')">✕</button>
+        </div>
+      </div>
+      <div class="goal-pct-row">
+        <div class="goal-pct-bar"><div class="goal-pct-fill" style="width:${pct}%;background:${mColor}"></div></div>
+        <div class="goal-pct-num">${pct}%</div>
+      </div>
+      <div class="goal-weeks">${weeksHtml}</div>`;
+    el.appendChild(card);
+  });
+}
+
+function toggleWeek(goalId, weekIdx){
+  if(!S.goals[goalId]) return;
+  S.goals[goalId].weeks[weekIdx].done = !S.goals[goalId].weeks[weekIdx].done;
+  save();
+  renderGoalList();
+}
+
+function deleteGoal(id){
+  if(!confirm('Delete this goal?')) return;
+  delete S.goals[id];
+  save();
+  renderGoalList();
+}
+
+// ── Goal Modal ──
+function openGoalModal(id=null){
+  editingGoalId = id;
+  selMentors = [];
+  const g = id ? S.goals[id] : null;
+
+  document.getElementById('gm-title').textContent = id ? 'Edit Goal' : 'New Goal';
+  document.getElementById('gm-name').value = g ? g.name : '';
+  document.getElementById('gm-target').value = g ? g.target : '';
+  selMentors = g ? (Array.isArray(g.mentors) ? [...g.mentors] : [g.mentor||'ma']) : [];
+
+  // Mentor picker
+  const mrow = document.getElementById('gm-mentors');
+  mrow.innerHTML = Object.keys(MENTOR_NAMES).map(m =>
+    `<button class="gm-mentor-btn${selMentors.includes(m)?' sel':''}" onclick="pickMentor('${m}')">${MENTOR_NAMES[m]}</button>`
+  ).join('');
+
+  // Week inputs
+  renderWeekInputs(g);
+  document.getElementById('gm-suggestion').textContent = '';
+  document.getElementById('goal-modal').classList.add('show');
+}
+
+function pickMentor(m){
+  if(selMentors.includes(m)){
+    selMentors = selMentors.filter(x=>x!==m);
+  } else {
+    selMentors.push(m);
+  }
+  document.querySelectorAll('.gm-mentor-btn').forEach(b => {
+    const mid = Object.keys(MENTOR_NAMES).find(k=>MENTOR_NAMES[k]===b.textContent);
+    b.classList.toggle('sel', selMentors.includes(mid));
+  });
+}
+
+function renderWeekInputs(existingGoal=null){
+  const wrap = document.getElementById('gm-weeks');
+  wrap.innerHTML = [1,2,3,4].map(i => {
+    const val = existingGoal ? existingGoal.weeks[i-1].target : '';
+    return `<div class="gm-week-row">
+      <div class="gm-week-lbl">Week ${i}</div>
+      <input class="gm-week-input" id="gw-${i}" placeholder="Target for week ${i}" value="${val}">
+    </div>`;
+  }).join('');
+}
+
+function suggestWeeks(){
+  const target = document.getElementById('gm-target').value.trim();
+  if(!target) return;
+  // Try to extract a number
+  const num = parseFloat(target.replace(/[^\d.]/g,''));
+  if(!isNaN(num) && num > 0){
+    const perWeek = (num/4).toFixed(num%4===0?0:1);
+    document.getElementById('gm-suggestion').textContent =
+      `Suggestion: ${perWeek} per week to hit your target`;
+    // Auto-fill if empty
+    for(let i=1;i<=4;i++){
+      const inp = document.getElementById('gw-'+i);
+      if(inp && !inp.value){
+        const unit = target.replace(/[\d.\s]/g,'').trim();
+        inp.value = perWeek + (unit ? ' '+unit : '');
+      }
+    }
+  }
+}
+
+function saveGoal(){
+  const name = document.getElementById('gm-name').value.trim();
+  const target = document.getElementById('gm-target').value.trim();
+  if(!name){ toast('Enter a goal title','bad'); return; }
+  if(!target){ toast('Enter a measurable target','bad'); return; }
+
+  const weeks = [1,2,3,4].map(i => ({
+    target: (document.getElementById('gw-'+i)?.value||'').trim() || `Week ${i}`,
+    done: editingGoalId ? S.goals[editingGoalId].weeks[i-1].done : false
+  }));
+
+  const id = editingGoalId || ('g_'+Date.now());
+  if(!S.goals) S.goals = {};
+  S.goals[id] = {
+    id, name, target, mentors: selMentors.length ? selMentors : ['ma'],
+    month: selMonth, weeks,
+    created: Date.now()
+  };
+  save();
+  closeGoalModal();
+  renderGoalList();
+  toast(editingGoalId ? 'Goal updated' : 'Goal added','good');
+  editingGoalId = null;
+}
+
+function closeGoalModal(){
+  document.getElementById('goal-modal').classList.remove('show');
+  editingGoalId = null;
+}
+
+// ═══ TODO SYSTEM ═══
+
+function renderTodos(){
+  const el = document.getElementById('todo-list');
+  if(!el) return;
+  const todos = getTodos();
+  const pending = todos.filter(t=>!t.done);
+  const done = todos.filter(t=>t.done);
+  el.innerHTML = '';
+
+  if(todos.length === 0){
+    const empty = document.createElement('div');
+    empty.style.cssText = 'text-align:center;padding:30px 0;color:var(--text3);font-style:italic;font-size:13px;';
+    empty.textContent = 'Nothing here yet. Add your first task above.';
+    el.appendChild(empty);
+    return;
+  }
+
+  if(pending.length > 0){
+    const lbl = document.createElement('div');
+    lbl.className = 'todo-section-label';
+    lbl.textContent = 'Pending';
+    el.appendChild(lbl);
+    pending.forEach(t => el.appendChild(buildTodoItem(t)));
+  }
+
+  if(done.length > 0){
+    const lbl = document.createElement('div');
+    lbl.className = 'todo-section-label';
+    lbl.innerHTML = `Done <button class="todo-clear-btn" onclick="clearDoneTodos()">Clear all</button>`;
+    el.appendChild(lbl);
+    done.forEach(t => el.appendChild(buildTodoItem(t)));
+  }
+}
+
+function buildTodoItem(t){
+  const div = document.createElement('div');
+  div.className = 'todo-item' + (t.done ? ' done-t' : '');
+  div.innerHTML = `
+    <div class="todo-chk" onclick="toggleTodo('${t.id}')">${t.done?'✓':''}</div>
+    <div class="todo-text-wrap">
+      <div class="todo-text" ondblclick="editTodoText(this,'${t.id}')">${t.text}</div>
+    </div>
+    <button class="todo-del" onclick="deleteTodo('${t.id}')">✕</button>`;
+  return div;
+}
+
+function addTodo(){
+  const inp = document.getElementById('todo-input');
+  const text = inp.value.trim();
+  if(!text) return;
+  if(!S.todos) S.todos = [];
+  S.todos.unshift({id:'t_'+Date.now(), text, done:false, created:Date.now()});
+  inp.value = '';
+  save();
+  renderTodos();
+}
+
+function toggleTodo(id){
+  const t = (S.todos||[]).find(x=>x.id===id);
+  if(!t) return;
+  t.done = !t.done;
+  save();
+  renderTodos();
+}
+
+function deleteTodo(id){
+  S.todos = (S.todos||[]).filter(x=>x.id!==id);
+  save();
+  renderTodos();
+}
+
+function clearDoneTodos(){
+  S.todos = (S.todos||[]).filter(x=>!x.done);
+  save();
+  renderTodos();
+}
+
+function editTodoText(el, id){
+  const cur = el.textContent;
+  const inp = document.createElement('input');
+  inp.className = 'todo-text-input';
+  inp.value = cur;
+  el.replaceWith(inp);
+  inp.focus();
+  inp.select();
+  const finish = () => {
+    const val = inp.value.trim() || cur;
+    const t = (S.todos||[]).find(x=>x.id===id);
+    if(t) t.text = val;
+    save();
+    renderTodos();
+  };
+  inp.onblur = finish;
+  inp.onkeydown = e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape'){ inp.value=cur; inp.blur(); } };
+}
+
 </script>
 </body>
 </html>
