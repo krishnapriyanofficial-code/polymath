@@ -2,8 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Polymath System</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0905">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Polymath">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Polymath">
+<meta name="description" content="Your personal Renaissance mastery system — track growth across all domains of life.">
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0905;--bg2:#0f0e0a;--bg3:#151410;--bg4:#1c1a14;--border:rgba(212,180,100,0.12);--border2:rgba(212,180,100,0.22);--gold:#c8a84b;--gold2:#e8c96a;--gold-dim:rgba(200,168,75,0.12);--red:#c84040;--red-dim:rgba(200,64,64,0.10);--text:#e8dfc8;--text2:#9a9080;--text3:#5a5448;--physical:#c0622a;--mind:#3a7fc1;--inner:#2a9e75;--wealth:#7060c8;--creative:#c05a3a;--social:#b84070;--kb:#c8821a;--dv:#3a7fc1;--mm:#787060;--ep:#2a9e75;--ip:#5a8a2a;--bm:#7060c8;--ma:#a89060;}
@@ -484,7 +496,10 @@ function renderTasks(filter='all'){
           ${!done&&!skip?`<button class="sbtn" onclick="openModal(event,'${t.id}')">SKIP</button>`:''}
           ${skip?`<span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red)">SKIPPED</span>`:''}
         </div>`;
-      if(!done&&!skip)el.onclick=()=>doComplete(t.id);
+      if(!skip){
+        if(done) el.onclick=()=>undoComplete(t.id);
+        else el.onclick=()=>doComplete(t.id);
+      }
       blk.appendChild(el);
     });
     c.appendChild(blk);
@@ -507,6 +522,22 @@ function doComplete(id){
   const nr=rankIdx(),prevXP=S.totalXP-xp;let pr=0;
   for(let i=0;i<RANKS.length;i++){if(prevXP>=RANKS[i].xp)pr=i;}
   if(nr>pr)setTimeout(()=>toast(`✦ RANK UP — ${RANKS[nr].name}`,'good'),700);
+}
+
+function undoComplete(id){
+  const t=TASKS.find(t=>t.id===id);
+  if(!t||!S.done[id])return;
+  const deb=!!S.debuffed[id];
+  const xp=deb?Math.round(t.xp*0.8):t.xp;
+  delete S.done[id];
+  S.totalXP=Math.max(0,S.totalXP-xp);
+  S.aXP[t.area]=Math.max(0,(S.aXP[t.area]||0)-xp);
+  const sh=Math.round(xp/t.mentors.length);
+  t.mentors.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-sh);});
+  save();
+  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
+  renderTasks(f);renderHero();
+  toast(`Undone — −${xp} XP removed`,'bad');
 }
 
 let pendId=null;
@@ -617,6 +648,14 @@ function toast(msg,type='good'){
 }
 
 renderHero();renderTasks('all');
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js')
+      .then(r=>console.log('SW registered:',r.scope))
+      .catch(e=>console.log('SW failed:',e));
+  });
+}
 </script>
 </body>
 </html>
