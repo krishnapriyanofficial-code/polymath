@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Polymath System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0905;--bg2:#0f0e0a;--bg3:#151410;--bg4:#1c1a14;--border:rgba(212,180,100,0.12);--border2:rgba(212,180,100,0.22);--gold:#c8a84b;--gold2:#e8c96a;--gold-dim:rgba(200,168,75,0.12);--red:#c84040;--red-dim:rgba(200,64,64,0.10);--text:#e8dfc8;--text2:#9a9080;--text3:#5a5448;--physical:#c0622a;--mind:#3a7fc1;--inner:#2a9e75;--wealth:#7060c8;--creative:#c05a3a;--social:#b84070;--kb:#c8821a;--dv:#3a7fc1;--mm:#787060;--ep:#2a9e75;--ip:#5a8a2a;--bm:#7060c8;--ma:#a89060;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.5;}
+.shell{max-width:420px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+.screen{display:none;flex-direction:column;flex:1;padding-bottom:84px;}
+.screen.active{display:flex;}
+.scroll-area{overflow-y:auto;flex:1;}
+.scroll-area::-webkit-scrollbar{width:2px;}
+.scroll-area::-webkit-scrollbar-thumb{background:var(--border2);border-radius:1px;}
+
+.app-header{padding:18px 20px 0;text-align:center;}
+.app-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;opacity:0.8;}
+.ornament{text-align:center;color:var(--border2);font-size:11px;margin:5px 0 0;letter-spacing:6px;}
+
+.hero{margin:14px 16px 0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:130px;height:130px;background:radial-gradient(circle,rgba(200,168,75,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-row{display:flex;align-items:center;gap:13px;margin-bottom:13px;}
+.hero-sigil{width:46px;height:46px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:16px;color:var(--gold);background:var(--bg4);flex-shrink:0;}
+.hero-name{font-family:'Cinzel',serif;font-size:15px;color:var(--text);letter-spacing:0.04em;}
+.hero-rank{font-size:12px;color:var(--gold);margin-top:3px;opacity:0.7;font-style:italic;}
+.xp-track{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:7px;}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
+.xp-meta{display:flex;justify-content:space-between;}
+.xp-ml{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:0.7;}
+.xp-mr{font-size:11px;color:var(--text3);}
+.pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
+.pill{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border-radius:20px;border:0.5px solid var(--border);color:var(--text2);background:var(--bg4);}
+.pill.g{border-color:rgba(200,168,75,0.3);color:var(--gold);}
+.pill.r{border-color:rgba(200,64,64,0.3);color:var(--red);}
+
+.debuff-bar{margin:8px 16px 0;background:var(--red-dim);border:0.5px solid rgba(200,64,64,0.25);border-radius:9px;padding:9px 13px;display:none;gap:7px;align-items:flex-start;}
+.debuff-bar.show{display:flex;}
+.di{font-size:12px;color:var(--red);flex-shrink:0;}
+.dt{font-size:12px;color:var(--red);opacity:0.82;line-height:1.5;}
+.dt b{font-weight:400;}
+
+.ftabs{display:flex;gap:5px;overflow-x:auto;padding:0 16px;margin-top:11px;scrollbar-width:none;}
+.ftabs::-webkit-scrollbar{display:none;}
+.ftab{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.07em;padding:5px 11px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);background:transparent;cursor:pointer;white-space:nowrap;transition:all 0.18s;}
+.ftab.active,.ftab:hover{border-color:var(--border2);color:var(--gold);background:var(--gold-dim);}
+
+.section{padding:0 16px;margin-top:14px;}
+.area-block{margin-bottom:3px;}
+.area-lbl{display:flex;align-items:center;gap:8px;padding:7px 0 5px;}
+.adot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.an{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.5;}
+.aline{flex:1;height:0.5px;background:var(--border);}
+
+.task{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:0.5px solid var(--border);border-radius:10px;margin-bottom:5px;cursor:pointer;background:var(--bg2);transition:all 0.18s;position:relative;overflow:hidden;}
+.task::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ac,var(--border));opacity:0;transition:opacity 0.18s;}
+.task:hover{border-color:var(--border2);background:var(--bg3);}
+.task:hover::before,.task.done::before,.task.skipped::before{opacity:1;}
+.task.done{opacity:0.36;}
+.task.done .tn{text-decoration:line-through;}
+.task.skipped{border-color:rgba(200,64,64,0.18);background:rgba(200,64,64,0.03);}
+.task.skipped::before{background:var(--red);}
+.chk{width:17px;height:17px;border-radius:50%;border:1px solid var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all 0.18s;font-size:9px;color:transparent;}
+.task.done .chk{background:var(--ac,var(--gold));border-color:transparent;color:#fff;}
+.task.skipped .chk{background:var(--red-dim);border-color:var(--red);color:var(--red);}
+.tb{flex:1;min-width:0;}
+.tn{font-size:14px;color:var(--text);line-height:1.35;font-weight:300;}
+.th{font-size:12px;color:var(--text3);margin-top:2px;font-style:italic;}
+.tms{display:flex;gap:3px;flex-wrap:wrap;margin-top:5px;}
+.mt{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 6px;border-radius:20px;letter-spacing:0.03em;}
+.tr{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.txp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);opacity:0.5;}
+.sbtn{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.07em;padding:2px 7px;border-radius:20px;border:0.5px solid rgba(200,64,64,0.28);color:var(--red);background:transparent;cursor:pointer;opacity:0;transition:opacity 0.18s;white-space:nowrap;}
+.task:hover .sbtn{opacity:0.65;}
+.task.skipped .sbtn{opacity:1;background:var(--red-dim);}
+.mt-ma{background:rgba(168,144,96,0.14);color:#c8a84b;border:0.5px solid rgba(168,144,96,0.22);}
+.mt-kb{background:rgba(200,130,26,0.14);color:#e8a03a;border:0.5px solid rgba(200,130,26,0.22);}
+.mt-dv{background:rgba(58,127,193,0.14);color:#6aafef;border:0.5px solid rgba(58,127,193,0.22);}
+.mt-mm{background:rgba(120,112,96,0.14);color:#a09888;border:0.5px solid rgba(120,112,96,0.22);}
+.mt-ep{background:rgba(42,158,117,0.14);color:#4ad0a0;border:0.5px solid rgba(42,158,117,0.22);}
+.mt-ip{background:rgba(90,138,42,0.14);color:#8abe4a;border:0.5px solid rgba(90,138,42,0.22);}
+.mt-bm{background:rgba(112,96,200,0.14);color:#9888e8;border:0.5px solid rgba(112,96,200,0.22);}
+
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(10,9,5,0.94);backdrop-filter:blur(12px);border-top:0.5px solid var(--border);display:flex;padding:10px 0 16px;z-index:100;}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;opacity:0.38;transition:opacity 0.18s;border:none;background:none;}
+.nb.active{opacity:1;}
+.nb:hover{opacity:0.65;}
+.ni{font-family:'Cinzel',serif;font-size:14px;color:var(--gold);}
+.nl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.11em;color:var(--text2);text-transform:uppercase;}
+
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:0 16px;margin-top:13px;}
+.pc{background:var(--bg3);border:0.5px solid var(--border);border-radius:11px;padding:12px 9px;text-align:center;}
+.pv{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);}
+.pv.r{color:var(--red);}
+.pl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.09em;color:var(--text3);margin-top:3px;text-transform:uppercase;}
+
+.bsec{padding:0 16px;margin-top:17px;}
+.btitle{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.18em;color:var(--text3);text-transform:uppercase;margin-bottom:10px;}
+.brow{display:grid;grid-template-columns:80px 1fr 42px;align-items:center;gap:9px;margin-bottom:8px;}
+.bn{font-size:12px;color:var(--text2);font-style:italic;}
+.bt{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.bf{height:100%;border-radius:2px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
+.bnum{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);text-align:right;}
+
+/* BECOME */
+.bec-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:13px;margin-bottom:7px;}
+.bec-top{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.bec-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;border:1px solid;flex-shrink:0;}
+.bec-info{flex:1;}
+.bec-name{font-family:'Cinzel',serif;font-size:13px;color:var(--text);}
+.bec-role{font-size:11px;color:var(--text3);font-style:italic;margin-top:1px;}
+.bec-pct{font-family:'Cinzel',serif;font-size:19px;color:var(--gold);min-width:50px;text-align:right;}
+.bec-pct.done{color:var(--inner);}
+.bec-btrack{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:6px;}
+.bec-bfill{height:100%;border-radius:2px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);}
+.bec-traits{display:flex;flex-wrap:wrap;gap:4px;}
+.bec-trait{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);transition:all 0.3s;}
+.bec-trait.e{color:var(--gold);border-color:rgba(200,168,75,0.28);background:var(--gold-dim);}
+.bec-done-lbl{font-size:11px;color:var(--inner);font-style:italic;margin-top:6px;}
+
+/* COUNCIL */
+.cc{background:var(--bg3);border:0.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:9px;}
+.ct{display:flex;align-items:center;gap:11px;margin-bottom:8px;}
+.cav{width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;border:1px solid;flex-shrink:0;}
+.cn{font-family:'Cinzel',serif;font-size:13px;color:var(--text);}
+.cr{font-size:11px;color:var(--text3);font-style:italic;margin-top:1px;}
+.cq{font-size:13px;color:var(--text2);font-style:italic;line-height:1.5;padding-left:9px;border-left:1px solid var(--border);margin-bottom:7px;}
+.cw{font-size:12px;color:var(--text3);font-style:italic;margin-bottom:7px;}
+.ctrs{display:flex;flex-wrap:wrap;gap:4px;}
+.trtag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);}
+.cxr{display:flex;align-items:center;gap:8px;margin-top:9px;}
+.cxb{flex:1;height:2px;background:var(--bg4);border-radius:1px;overflow:hidden;}
+.cxf{height:100%;border-radius:1px;transition:width 0.5s;}
+.cxn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);min-width:60px;text-align:right;}
+
+/* RANKS */
+.rkcard{border:0.5px solid var(--border);border-radius:12px;margin-bottom:9px;background:var(--bg2);overflow:hidden;}
+.rkcard.cur{border-color:rgba(200,168,75,0.38);background:var(--bg3);}
+.rkcard.lk{opacity:0.3;}
+.rkh{display:flex;align-items:center;gap:11px;padding:13px 13px 9px;}
+.rkr{font-family:'Cinzel',serif;font-size:19px;color:var(--gold);opacity:0.42;min-width:26px;text-align:center;}
+.rkcard.cur .rkr{opacity:1;}
+.rknw{flex:1;}
+.rkn{font-family:'Cinzel',serif;font-size:13px;color:var(--text);letter-spacing:0.04em;}
+.rkq{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px;}
+.rkcbadge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--gold);border:0.5px solid rgba(200,168,75,0.28);padding:2px 7px;border-radius:20px;}
+.rkbm{height:2px;background:var(--bg4);margin:0 13px 9px;border-radius:1px;overflow:hidden;}
+.rkbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:1px;transition:width 0.5s;}
+.rkul{padding:0 13px 13px;}
+.rkulh{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.11em;color:var(--text3);text-transform:uppercase;margin-bottom:7px;}
+.uli{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
+.ulicon{font-size:11px;flex-shrink:0;margin-top:1px;}
+.ulname{font-size:13px;color:var(--text);line-height:1.3;}
+.uldesc{font-size:12px;color:var(--text3);font-style:italic;margin-top:1px;}
+.ultype{font-family:'JetBrains Mono',monospace;font-size:8px;padding:1px 6px;border-radius:10px;margin-top:3px;display:inline-block;}
+.ty-skill{background:rgba(58,127,193,0.14);color:#6aafef;border:0.5px solid rgba(58,127,193,0.2);}
+.ty-trial{background:rgba(42,158,117,0.14);color:#4ad0a0;border:0.5px solid rgba(42,158,117,0.2);}
+.ty-ability{background:rgba(112,96,200,0.14);color:#9888e8;border:0.5px solid rgba(112,96,200,0.2);}
+.ty-penalty{background:rgba(200,64,64,0.11);color:var(--red);border:0.5px solid rgba(200,64,64,0.2);}
+
+.pen-item{display:flex;align-items:center;gap:9px;padding:8px 11px;border:0.5px solid rgba(200,64,64,0.16);border-radius:8px;margin-bottom:5px;background:rgba(200,64,64,0.03);}
+.pen-dot{width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.pen-txt{font-size:12px;color:var(--red);opacity:0.75;flex:1;}
+.pen-val{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);}
+
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);border:0.5px solid var(--border2);border-radius:20px;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0;transition:opacity 0.28s;pointer-events:none;white-space:nowrap;z-index:200;}
+.toast.good{background:var(--bg3);color:var(--gold);}
+.toast.bad{background:rgba(200,64,64,0.13);border-color:rgba(200,64,64,0.32);color:var(--red);}
+.toast.show{opacity:1;}
+
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:300;display:none;align-items:flex-end;justify-content:center;}
+.modal-ov.show{display:flex;}
+.modal{width:100%;max-width:420px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:16px 16px 0 0;padding:22px 18px 34px;max-height:80vh;overflow-y:auto;}
+.modal-ttl{font-family:'Cinzel',serif;font-size:14px;color:var(--red);letter-spacing:0.05em;margin-bottom:8px;}
+.modal-body{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:16px;}
+.modal-body b{color:var(--red);font-weight:400;}
+.mbtns{display:flex;gap:7px;}
+.mbtn{flex:1;padding:11px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;cursor:pointer;transition:all 0.18s;}
+.mbtn.conf{background:var(--red-dim);border:0.5px solid rgba(200,64,64,0.38);color:var(--red);}
+.mbtn.conf:hover{background:rgba(200,64,64,0.17);}
+.mbtn.can{background:transparent;border:0.5px solid var(--border);color:var(--text3);}
+.mbtn.can:hover{border-color:var(--border2);color:var(--text2);}
+
+.reset-btn{margin:14px 16px 0;padding:11px;border:0.5px solid var(--border);border-radius:10px;background:transparent;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.09em;text-transform:uppercase;cursor:pointer;width:calc(100% - 32px);transition:all 0.18s;}
+.reset-btn:hover{border-color:var(--border2);color:var(--text2);}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="toast good" id="toast"></div>
+
+<div class="modal-ov" id="skip-modal">
+  <div class="modal">
+    <div class="modal-ttl">⚠ Skip this task?</div>
+    <div class="modal-body" id="skip-body"></div>
+    <div class="mbtns">
+      <button class="mbtn can" onclick="closeModal()">Cancel</button>
+      <button class="mbtn conf" onclick="doSkip()">Skip & Accept Penalty</button>
+    </div>
+  </div>
+</div>
+
+<!-- TODAY -->
+<div class="screen active" id="screen-today">
+  <div class="app-header"><div class="app-title">The Polymath System</div></div>
+  <div class="hero">
+    <div class="hero-row">
+      <div class="hero-sigil">⬡</div>
+      <div><div class="hero-name">The Polymath</div><div class="hero-rank" id="hero-rank">Rank I — Apprentice</div></div>
+    </div>
+    <div class="xp-track"><div class="xp-fill" id="xpbar" style="width:0%"></div></div>
+    <div class="xp-meta"><div class="xp-ml"><span id="xpnow">0</span> XP</div><div class="xp-mr">next: <span id="xpnext">500</span></div></div>
+    <div class="pills">
+      <div class="pill g" id="st1">Today: 0 XP</div>
+      <div class="pill" id="st2">0/27 tasks</div>
+      <div class="pill" id="st3">Streak: 0</div>
+      <div class="pill r" id="st4" style="display:none">0 skipped</div>
+    </div>
+  </div>
+  <div class="debuff-bar" id="dbar"><div class="di">⚡</div><div class="dt" id="dtext"></div></div>
+  <div class="ftabs">
+    <button class="ftab active" data-f="all" onclick="filt('all',this)">All</button>
+    <button class="ftab" data-f="physical" onclick="filt('physical',this)">Physical</button>
+    <button class="ftab" data-f="mind" onclick="filt('mind',this)">Mind</button>
+    <button class="ftab" data-f="inner" onclick="filt('inner',this)">Inner</button>
+    <button class="ftab" data-f="wealth" onclick="filt('wealth',this)">Wealth</button>
+    <button class="ftab" data-f="creative" onclick="filt('creative',this)">Creative</button>
+    <button class="ftab" data-f="social" onclick="filt('social',this)">Social</button>
+  </div>
+  <div class="scroll-area"><div class="section" id="tc"></div><div style="height:10px"></div></div>
+</div>
+
+<!-- PROGRESS -->
+<div class="screen" id="screen-progress">
+  <div class="app-header"><div class="app-title">Progress</div><div class="ornament">· · ·</div></div>
+  <div class="scroll-area">
+    <div class="pg">
+      <div class="pc"><div class="pv" id="p1">0</div><div class="pl">Total XP</div></div>
+      <div class="pc"><div class="pv" id="p2">0/27</div><div class="pl">Today</div></div>
+      <div class="pc"><div class="pv r" id="p3">0</div><div class="pl">XP Lost</div></div>
+    </div>
+    <div class="bsec" id="bec-section"><div class="btitle">Becoming Them</div><div id="bec-cards"></div></div>
+    <div class="bsec">
+      <div class="btitle">Area Mastery</div>
+      <div class="brow"><div class="bn">Physical</div><div class="bt"><div class="bf" style="background:var(--physical)" id="ab-physical"></div></div><div class="bnum" id="av-physical">0</div></div>
+      <div class="brow"><div class="bn">Mind</div><div class="bt"><div class="bf" style="background:var(--mind)" id="ab-mind"></div></div><div class="bnum" id="av-mind">0</div></div>
+      <div class="brow"><div class="bn">Inner</div><div class="bt"><div class="bf" style="background:var(--inner)" id="ab-inner"></div></div><div class="bnum" id="av-inner">0</div></div>
+      <div class="brow"><div class="bn">Wealth</div><div class="bt"><div class="bf" style="background:var(--wealth)" id="ab-wealth"></div></div><div class="bnum" id="av-wealth">0</div></div>
+      <div class="brow"><div class="bn">Creative</div><div class="bt"><div class="bf" style="background:var(--creative)" id="ab-creative"></div></div><div class="bnum" id="av-creative">0</div></div>
+      <div class="brow"><div class="bn">Social</div><div class="bt"><div class="bf" style="background:var(--social)" id="ab-social"></div></div><div class="bnum" id="av-social">0</div></div>
+    </div>
+    <div class="bsec" id="pen-sec" style="display:none"><div class="btitle">Penalty Log</div><div id="pen-log"></div></div>
+    <button class="reset-btn" onclick="resetDay()">⟳ Reset Today's Tasks</button>
+    <div style="height:12px"></div>
+  </div>
+</div>
+
+<!-- COUNCIL -->
+<div class="screen" id="screen-council">
+  <div class="app-header"><div class="app-title">Inner Council</div><div class="ornament">· · ·</div></div>
+  <div class="scroll-area"><div style="padding:0 16px;margin-top:13px" id="cl"></div><div style="height:12px"></div></div>
+</div>
+
+<!-- RANKS -->
+<div class="screen" id="screen-ranks">
+  <div class="app-header"><div class="app-title">Rank Journey</div><div class="ornament">· · ·</div></div>
+  <div class="scroll-area"><div style="padding:0 16px;margin-top:13px" id="rl"></div><div style="height:12px"></div></div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nb active" onclick="go('today',this)"><div class="ni">◈</div><div class="nl">Today</div></button>
+  <button class="nb" onclick="go('progress',this)"><div class="ni">◆</div><div class="nl">Progress</div></button>
+  <button class="nb" onclick="go('council',this)"><div class="ni">⬡</div><div class="nl">Council</div></button>
+  <button class="nb" onclick="go('ranks',this)"><div class="ni">✦</div><div class="nl">Ranks</div></button>
+</nav>
+</div>
+
+<script>
+const RANKS=[
+  {name:'Apprentice',xp:0,unlocks:[
+    {icon:'◈',type:'ability',cls:'ty-ability',name:'The Watcher',desc:'Morning + evening reflection unlocked. You observe your own patterns.'},
+    {icon:'⚡',type:'penalty',cls:'ty-penalty',name:'Skip Penalty Active',desc:'Skipping costs XP, resets streak, and debuffs that task\'s XP by 20% the next day.'}
+  ]},
+  {name:'Scholar',xp:500,unlocks:[
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Language Track',desc:'Daily vocabulary quests unlock. Each language has its own fluency bar.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Chef\'s Path',desc:'Cooking tasks unlock recipe difficulty tiers: Simple → Complex → Masterwork.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Stoic',desc:'Complete all Inner tasks every day for 30 days. Reward: Epictetus Mastery Badge + 500 bonus XP.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Cross-Domain Sight',desc:'Completing tasks from 4+ areas in one day grants a 1.2× daily XP multiplier.'}
+  ]},
+  {name:'Practitioner',xp:1500,unlocks:[
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'MBA Track',desc:'Weekly finance reviews, business cases, and investment simulations unlock as bonus quests.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Combat Arts Track',desc:'Martial arts study, sparring logs, and form mastery tasks unlock under Physical.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Sword',desc:'Complete all Physical tasks every day for 30 days straight. Reward: Musashi Mastery Badge + 800 XP.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Iron Hour',desc:'Logging a pre-sunrise training session grants +50 bonus XP once per day.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Kaizen Shield',desc:'One skip per 14-day period is forgiven. Even Musashi had one bad day.'}
+  ]},
+  {name:'Artisan',xp:3500,unlocks:[
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Polyglot Track',desc:'Multi-language daily quests unlock. Each language has its own XP bar toward fluency tiers: Beginner → Conversational → Fluent → Native.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Chess Mastery Track',desc:'Opening study, endgame drills, and tournament prep unlock as structured weekly quests with ELO tracking.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Wealth Builder Track',desc:'Investment portfolio simulation, compound interest logs, and net worth tracking unlock as monthly missions.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Notebook',desc:'Journal every single day with 3+ entries for 30 days. Reward: Da Vinci Mastery Badge + 1,200 XP.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'The Fusion',desc:'Complete tasks from all 6 areas in one day → 2× XP multiplier on your next 3 tasks.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Mentor Summon',desc:'Once per week, choose one mentor\'s voice for the day. All tasks linked to them grant +30% XP.'}
+  ]},
+  {name:'Virtuoso',xp:7000,unlocks:[
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Renaissance Track',desc:'Cross-discipline projects unlock — design + cook + write + train in a single themed week for massive XP.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Philosophy Track',desc:'Deep-reading quests on Stoicism, Zen Buddhism, and Eastern philosophy with weekly reflection prompts.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Teaching Track',desc:'Mentor others — write, record, or teach something weekly. XP scales with depth and consistency.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Mamba',desc:'Train every single day for 30 days — no rest days. Reward: Kobe Mastery Badge + 2,000 XP.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Detective',desc:'Solve one strategic problem or chess puzzle every day for 30 days. Reward: Batman Mastery Badge + 2,000 XP.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'The Sovereign Eye',desc:'You see the lesson in everything. All Social tasks now also earn Inner XP simultaneously.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Compound Mind',desc:'Each consecutive day you complete 15+ tasks, your XP gain increases by 5% (stacks up to 50%).'}
+  ]},
+  {name:'Sage',xp:15000,unlocks:[
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Legacy Track',desc:'Build something lasting — a business, book, or body of work. Monthly milestone quests with massive XP rewards.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Mastery Documentation',desc:'Write your own system, principles, or philosophy. Crystallize your knowledge into something teachable.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'The Gauntlet: 90 Days',desc:'All 6 areas completed every single day for 90 days. The hardest trial in the system. Reward: Sage Sigil + 10,000 XP.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'30-Day Trial: The Emperor',desc:'Complete every Aurelius task plus 4 other areas daily for 30 days. Reward: Aurelius Mastery Badge + 3,000 XP.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'The Aurelius Protocol',desc:'Every experience — joy, failure, conversation — logs as a lesson. +10 XP per day just for living consciously.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Debuff Immunity',desc:'At Sage level the skip debuff is permanently removed. Your discipline is now intrinsic.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Mentor Mastery Aura',desc:'Any mentor you\'ve transformed 100% in now passively grants +10% XP on all tasks linked to them.'}
+  ]},
+  {name:'Polymath',xp:30000,unlocks:[
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'You Have Become Them',desc:'All 7 mentor transformation percentages reach 100%. You no longer follow the system — you are the system.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'Sovereign Multiplier',desc:'All XP earned is permanently doubled. You\'ve paid the price. Now you compound.'},
+    {icon:'✦',type:'ability',cls:'ty-ability',name:'The Inner Council Speaks',desc:'Each completed mentor unlocks a unique daily wisdom prompt drawn from their real writings and philosophy.'},
+    {icon:'✦',type:'trial',cls:'ty-trial',name:'The Polymath Manifesto',desc:'Write your personal philosophy — distilled from all you\'ve become. This is your Meditations. Your Book of Five Rings. Your legacy.'},
+    {icon:'◈',type:'skill',cls:'ty-skill',name:'Infinite Track',desc:'Design your own quests, tracks, and trials. You have mastered the system — now you extend it.'}
+  ]}
+];
+const ROMANS=['I','II','III','IV','V','VI','VII'];
+
+const COUNCIL=[
+  {id:'ma',name:'Marcus Aurelius',role:'The Sovereign · Overall lens',ini:'MA',col:'#c8a84b',bc:'rgba(168,144,96,0.28)',
+   quote:'"You have power over your mind, not outside events."',
+   when:'Activates when you synthesize, reflect, or learn from everyone around you.',
+   traits:['Philosopher\'s Eye','Sovereign Calm','Living Archive','Universal Learner'],
+   btraits:['Philosopher\'s Eye','Sovereign Calm','Living Archive','Universal Learner','The Synthesis'],max:200},
+  {id:'kb',name:'Kobe Bryant',role:'Training · Mamba Mentality',ini:'KB',col:'#e8a03a',bc:'rgba(200,130,26,0.28)',
+   quote:'"Rest at the end, not in the middle."',
+   when:'Activates when you train, workout, or push past your physical limits.',
+   traits:['Mamba Hours','Obsessive Craft','Relentless Standard','4AM Spirit'],
+   btraits:['Mamba Hours','Obsessive Craft','Relentless Standard','4AM Spirit','The Dark Hours'],max:120},
+  {id:'dv',name:'Leonardo da Vinci',role:'Curiosity · Renaissance Genius',ini:'DV',col:'#6aafef',bc:'rgba(58,127,193,0.28)',
+   quote:'"Learning never exhausts the mind."',
+   when:'Activates when you study, read, explore, cook, or encounter something new.',
+   traits:['Notebook Mind','Cross-domain Sight','Polyglot Layer','Insatiable Wonder'],
+   btraits:['Notebook Mind','Cross-domain Sight','Polyglot Layer','Insatiable Wonder','The Renaissance'],max:220},
+  {id:'mm',name:'Miyamoto Musashi',role:'Discipline · The Way of the Sword',ini:'MM',col:'#a09888',bc:'rgba(120,112,96,0.28)',
+   quote:'"Do nothing that is of no use."',
+   when:'Activates when you hold your routine, resist distraction, or cut the useless.',
+   traits:['Iron Routine','Void Mind','The Way','No Wasted Motion'],
+   btraits:['Iron Routine','Void Mind','The Way','No Wasted Motion','The Empty Mirror'],max:110},
+  {id:'ep',name:'Epictetus',role:'Mindset · Master of the Inner World',ini:'EP',col:'#4ad0a0',bc:'rgba(42,158,117,0.28)',
+   quote:'"It\'s not what happens to you, but how you react."',
+   when:'Activates when you journal, meditate, face adversity, or check your reactions.',
+   traits:['Unshakeable Core','Observer\'s Eye','Poet\'s Tongue','Fortress Mind'],
+   btraits:['Unshakeable Core','Observer\'s Eye','Poet\'s Tongue','Fortress Mind','The Inner Citadel'],max:175},
+  {id:'ip',name:'Ippo Makunouchi',role:'Kaizen · One Step at a Time',ini:'IP',col:'#8abe4a',bc:'rgba(90,138,42,0.28)',
+   quote:'"The weakest can become the strongest."',
+   when:'Activates when you hit a plateau, lose a streak, or push 1% further today.',
+   traits:['Rising Resilience','Compound Growth','Underdog Spirit','Never Break Chain'],
+   btraits:['Rising Resilience','Compound Growth','Underdog Spirit','Never Break Chain','The Comeback'],max:90},
+  {id:'bm',name:'Batman',role:'Thinking · The Prepared Mind',ini:'BM',col:'#9888e8',bc:'rgba(112,96,200,0.28)',
+   quote:'"I am the world\'s greatest detective."',
+   when:'Activates when you strategize, plan, play chess, or manage your wealth.',
+   traits:['Tactical Foresight','Arsenal Mind','Bruce Wayne Mode','Always Prepared'],
+   btraits:['Tactical Foresight','Arsenal Mind','Bruce Wayne Mode','Always Prepared','The World\'s Best'],max:150}
+];
+
+const TASKS=[
+  {id:'p1',area:'physical',name:'Morning workout before 7AM',hint:'Train before the world wakes up — Kobe\'s edge',xp:25,mentors:['kb','mm','ip']},
+  {id:'p2',area:'physical',name:'30 min deliberate skill work',hint:'Technique focus, not just reps. Master the form.',xp:20,mentors:['kb','ip']},
+  {id:'p3',area:'physical',name:'Do the rep you don\'t want to do',hint:'One moment of pushing past the urge to stop',xp:15,mentors:['kb','mm']},
+  {id:'p4',area:'physical',name:'1% improvement log',hint:'Note one physical thing better than yesterday',xp:10,mentors:['ip','mm']},
+  {id:'p5',area:'physical',name:'Study a peak performer',hint:'Watch, read, analyze someone at the top of their craft',xp:15,mentors:['kb','dv','ma']},
+  {id:'m1',area:'mind',name:'4 hours of deep study',hint:'No phone, no noise — pure learning block',xp:30,mentors:['dv','ma']},
+  {id:'m2',area:'mind',name:'Read 30 pages of a book',hint:'Non-fiction or philosophy preferred',xp:20,mentors:['dv','ma']},
+  {id:'m3',area:'mind',name:'Learn 10 words in a new language',hint:'Daily reps build polyglot fluency over time',xp:15,mentors:['dv','ip']},
+  {id:'m4',area:'mind',name:'Ask one deep "why does this work?" question',hint:'Go beyond surface. Understand the mechanism.',xp:10,mentors:['dv','bm']},
+  {id:'m5',area:'mind',name:'Write a summary of what you learned',hint:'Da Vinci always closed the loop. Capture it.',xp:15,mentors:['dv','ma','ep']},
+  {id:'i1',area:'inner',name:'Morning reflection — 3 intentions',hint:'Write before anything else. Set your mind.',xp:20,mentors:['ma','ep']},
+  {id:'i2',area:'inner',name:'Meditate for 15 minutes',hint:'Sit with what is. No fixing. Just observing.',xp:20,mentors:['ep','ma']},
+  {id:'i3',area:'inner',name:'Journal — dichotomy of control',hint:'What was in your control? Let go of the rest.',xp:20,mentors:['ep','ma','dv']},
+  {id:'i4',area:'inner',name:'Catch one automatic reaction',hint:'Notice a moment you reacted instead of chose.',xp:15,mentors:['ep','mm']},
+  {id:'i5',area:'inner',name:'Evening review — lesson from today',hint:'What went well? What changes tomorrow?',xp:20,mentors:['ma','ep','dv']},
+  {id:'w1',area:'wealth',name:'Play one game of chess',hint:'Study an opening or endgame. Think three moves ahead.',xp:20,mentors:['bm','ma']},
+  {id:'w2',area:'wealth',name:'Daily savings action',hint:'One conscious financial decision. Track your spend.',xp:20,mentors:['bm','ip']},
+  {id:'w3',area:'wealth',name:'Study one MBA or finance concept',hint:'Strategy, economics, investing — Bruce Wayne\'s intellect',xp:20,mentors:['bm','dv','ma']},
+  {id:'w4',area:'wealth',name:'Plan tomorrow tonight',hint:'Top 3 priorities before sleep. Never enter unprepared.',xp:15,mentors:['bm','mm']},
+  {id:'w5',area:'wealth',name:'Review your financial position',hint:'Know your numbers. Batman always knows his resources.',xp:15,mentors:['bm','mm','ma']},
+  {id:'c1',area:'creative',name:'Write a poem or creative passage',hint:'Strip feelings to core. One honest thing, unedited.',xp:20,mentors:['dv','ep','ma']},
+  {id:'c2',area:'creative',name:'Cook a recipe — new or perfected',hint:'Chemistry, patience, and art in one practice.',xp:20,mentors:['dv','ip','mm']},
+  {id:'c3',area:'creative',name:'Sketch, doodle, or mind-map an idea',hint:'Da Vinci filled 13,000 pages. Start with one.',xp:10,mentors:['dv','bm']},
+  {id:'s1',area:'social',name:'Meaningful time with family or friends',hint:'Fully present — no phone. Aurelius valued his people.',xp:15,mentors:['ma','ep']},
+  {id:'s2',area:'social',name:'Extract a lesson from a conversation',hint:'What did someone teach you today? Write it.',xp:15,mentors:['ma','dv']},
+  {id:'s3',area:'social',name:'Experience something new',hint:'Concert, travel, event. Life is research.',xp:20,mentors:['ma','dv','ep']},
+  {id:'s4',area:'social',name:'No social media before noon',hint:'Guard your morning. The world can wait.',xp:15,mentors:['mm','ep']}
+];
+
+const ACOLS={physical:'var(--physical)',mind:'var(--mind)',inner:'var(--inner)',wealth:'var(--wealth)',creative:'var(--creative)',social:'var(--social)'};
+const AMAX={physical:85,mind:90,inner:95,wealth:90,creative:50,social:65};
+const ANAMES={physical:'Physical',mind:'Mind',inner:'Inner',wealth:'Wealth',creative:'Creative',social:'Social'};
+
+// STATE
+function load(){try{return JSON.parse(localStorage.getItem('pm_v4'))||{};}catch(e){return{};}}
+function save(){localStorage.setItem('pm_v4',JSON.stringify(S));}
+let S=load();
+if(!S.totalXP)S.totalXP=0;
+if(!S.aXP)S.aXP={};
+if(!S.mXP)S.mXP={};
+if(!S.done)S.done={};
+if(!S.skipped)S.skipped={};
+if(!S.streak)S.streak=0;
+if(!S.lastDate)S.lastDate='';
+if(!S.penXP)S.penXP=0;
+if(!S.debuffed)S.debuffed={};
+if(!S.penLog)S.penLog=[];
+
+const today=new Date().toISOString().slice(0,10);
+if(S.lastDate!==today){
+  const yest=new Date(Date.now()-86400000).toISOString().slice(0,10);
+  S.debuffed=S.skippedYest||{};
+  if(S.lastDate===yest&&Object.keys(S.done).length>0){S.streak=(S.streak||0)+1;}
+  else if(S.lastDate!==yest&&S.lastDate!==''){
+    const loss=Math.min(S.totalXP,50);
+    if(loss>0){S.totalXP=Math.max(0,S.totalXP-loss);S.penXP=(S.penXP||0)+loss;S.penLog.unshift({date:S.lastDate,type:'Missed full day',xp:-loss});}
+    S.streak=0;
+  }
+  S.skippedYest=S.skipped;S.done={};S.skipped={};S.lastDate=today;save();
+}
+
+function rankIdx(){let r=0;for(let i=0;i<RANKS.length;i++){if(S.totalXP>=RANKS[i].xp)r=i;}return r;}
+function mPct(id){const c=COUNCIL.find(x=>x.id===id);if(!c)return 0;return Math.min(100,Math.round(((S.mXP[id]||0)/c.max)*100));}
+
+function renderHero(){
+  const r=rankIdx(),rk=RANKS[r],nx=RANKS[r+1];
+  const xpIn=S.totalXP-rk.xp,xpN=nx?nx.xp-rk.xp:1;
+  document.getElementById('hero-rank').textContent=`Rank ${ROMANS[r]} — ${rk.name}`;
+  document.getElementById('xpbar').style.width=Math.min(100,Math.round((xpIn/xpN)*100))+'%';
+  document.getElementById('xpnow').textContent=S.totalXP;
+  document.getElementById('xpnext').textContent=nx?nx.xp:'MAX';
+  const tXP=TASKS.filter(t=>S.done[t.id]).reduce((s,t)=>s+t.xp,0);
+  const tD=Object.keys(S.done).length,sk=Object.keys(S.skipped).length;
+  document.getElementById('st1').textContent=`Today: ${tXP} XP`;
+  document.getElementById('st2').textContent=`${tD}/${TASKS.length} tasks`;
+  document.getElementById('st3').textContent=`Streak: ${S.streak}`;
+  const s4=document.getElementById('st4');s4.style.display=sk>0?'':'none';s4.textContent=`${sk} skipped`;
+  const dc=Object.keys(S.debuffed).length,db=document.getElementById('dbar');
+  if(dc>0){
+    db.classList.add('show');
+    const names=Object.keys(S.debuffed).map(id=>TASKS.find(t=>t.id===id)?.name||'').filter(Boolean).slice(0,2);
+    document.getElementById('dtext').innerHTML=`<b>Debuff active:</b> ${dc} task${dc>1?'s':''} you skipped yesterday give <b>−20% XP</b> today: ${names.join(', ')}${dc>2?' +more':''}.`;
+  } else db.classList.remove('show');
+}
+
+function renderTasks(filter='all'){
+  const areas=['physical','mind','inner','wealth','creative','social'];
+  const c=document.getElementById('tc');c.innerHTML='';
+  areas.forEach(area=>{
+    if(filter!=='all'&&filter!==area)return;
+    const tasks=TASKS.filter(t=>t.area===area);
+    const blk=document.createElement('div');blk.className='area-block';
+    blk.innerHTML=`<div class="area-lbl"><div class="adot" style="background:${ACOLS[area]}"></div><div class="an">${ANAMES[area]}</div><div class="aline"></div></div>`;
+    tasks.forEach(t=>{
+      const done=!!S.done[t.id],skip=!!S.skipped[t.id],deb=!!S.debuffed[t.id];
+      const xp=deb?Math.round(t.xp*0.8):t.xp;
+      const el=document.createElement('div');
+      el.className=`task ${area}${done?' done':''}${skip?' skipped':''}`;
+      el.style.setProperty('--ac',ACOLS[area]);
+      const mts=t.mentors.map(m=>`<span class="mt mt-${m}">${COUNCIL.find(c=>c.id===m)?.name.split(' ')[0]||m}</span>`).join('');
+      el.innerHTML=`
+        <div class="chk">${done?'✓':skip?'✗':''}</div>
+        <div class="tb">
+          <div class="tn">${t.name}</div>
+          <div class="th">${t.hint}</div>
+          <div class="tms">${mts}</div>
+        </div>
+        <div class="tr">
+          <div class="txp">+${xp}${deb&&!done?'<span style="color:var(--red);font-size:9px"> −20%</span>':''}</div>
+          ${!done&&!skip?`<button class="sbtn" onclick="openModal(event,'${t.id}')">SKIP</button>`:''}
+          ${skip?`<span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red)">SKIPPED</span>`:''}
+        </div>`;
+      if(!done&&!skip)el.onclick=()=>doComplete(t.id);
+      blk.appendChild(el);
+    });
+    c.appendChild(blk);
+  });
+}
+
+function doComplete(id){
+  const t=TASKS.find(t=>t.id===id);
+  if(!t||S.done[id]||S.skipped[id])return;
+  const deb=!!S.debuffed[id];
+  const xp=deb?Math.round(t.xp*0.8):t.xp;
+  S.done[id]=true;S.totalXP+=xp;S.aXP[t.area]=(S.aXP[t.area]||0)+xp;
+  const sh=Math.round(xp/t.mentors.length);
+  t.mentors.forEach(m=>{S.mXP[m]=(S.mXP[m]||0)+sh;});
+  save();
+  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
+  renderTasks(f);renderHero();
+  const mn=t.mentors.map(m=>COUNCIL.find(c=>c.id===m)?.name.split(' ')[0]).join(' · ');
+  toast(`+${xp} XP — ${mn}`,'good');
+  const nr=rankIdx(),prevXP=S.totalXP-xp;let pr=0;
+  for(let i=0;i<RANKS.length;i++){if(prevXP>=RANKS[i].xp)pr=i;}
+  if(nr>pr)setTimeout(()=>toast(`✦ RANK UP — ${RANKS[nr].name}`,'good'),700);
+}
+
+let pendId=null;
+function openModal(e,id){
+  e.stopPropagation();const t=TASKS.find(t=>t.id===id);if(!t)return;
+  pendId=id;const pen=Math.round(t.xp*0.5);
+  document.getElementById('skip-body').innerHTML=`Skipping <b>"${t.name}"</b> will:<br><br>⚡ Deduct <b>−${pen} XP</b> from your total<br>⚡ Break your <b>current streak</b> (back to 0)<br>⚡ This task gives <b>−20% XP tomorrow</b> as a debuff<br><br><span style="color:var(--text3);font-size:12px;font-style:italic">"Do nothing that is of no use." — Musashi. But also know your real limits.</span>`;
+  document.getElementById('skip-modal').classList.add('show');
+}
+function closeModal(){document.getElementById('skip-modal').classList.remove('show');pendId=null;}
+function doSkip(){
+  if(!pendId)return;const t=TASKS.find(t=>t.id===pendId);if(!t){closeModal();return;}
+  const pen=Math.round(t.xp*0.5);
+  S.skipped[t.id]=true;S.totalXP=Math.max(0,S.totalXP-pen);S.penXP=(S.penXP||0)+pen;
+  S.streak=0;S.penLog.unshift({date:today,type:`Skipped: ${t.name}`,xp:-pen});
+  if(S.penLog.length>20)S.penLog=S.penLog.slice(0,20);
+  save();closeModal();
+  const f=document.querySelector('.ftab.active')?.dataset.f||'all';
+  renderTasks(f);renderHero();
+  toast(`−${pen} XP · Streak reset · Debuff tomorrow`,'bad');
+}
+
+function renderProgress(){
+  const done=Object.keys(S.done).length;
+  document.getElementById('p1').textContent=S.totalXP;
+  document.getElementById('p2').textContent=`${done}/${TASKS.length}`;
+  document.getElementById('p3').textContent=S.penXP||0;
+  // BECOME THEM
+  const bc=document.getElementById('bec-cards');bc.innerHTML='';
+  COUNCIL.forEach(c=>{
+    const pct=mPct(c.id),xp=S.mXP[c.id]||0;
+    const earned=Math.floor((pct/100)*c.btraits.length),comp=pct>=100;
+    const d=document.createElement('div');d.className='bec-card';
+    const trs=c.btraits.map((tr,i)=>`<span class="bec-trait${i<earned?' e':''}">${tr}</span>`).join('');
+    d.innerHTML=`<div class="bec-top"><div class="bec-av" style="color:${c.col};border-color:${c.bc};background:var(--bg4)">${c.ini}</div><div class="bec-info"><div class="bec-name">${c.name}</div><div class="bec-role">${c.role}</div></div><div class="bec-pct${comp?' done':''}">${pct}%</div></div><div class="bec-btrack"><div class="bec-bfill" style="background:${c.col};width:${pct}%"></div></div><div class="bec-traits">${trs}</div>${comp?`<div class="bec-done-lbl">✦ Transformation complete — you have become ${c.name.split(' ')[0]}</div>`:''}`;
+    bc.appendChild(d);
+  });
+  // area bars
+  Object.keys(AMAX).forEach(a=>{
+    const xp=S.aXP[a]||0,pct=Math.min(100,Math.round((xp/AMAX[a])*100));
+    const b=document.getElementById('ab-'+a),v=document.getElementById('av-'+a);
+    if(b)b.style.width=pct+'%';if(v)v.textContent=xp;
+  });
+  // penalty log
+  const pl=document.getElementById('pen-log'),ps=document.getElementById('pen-sec');
+  if(S.penLog&&S.penLog.length>0){
+    ps.style.display='block';
+    pl.innerHTML=S.penLog.slice(0,8).map(p=>`<div class="pen-item"><div class="pen-dot"></div><div class="pen-txt">${p.type}</div><div class="pen-val">${p.xp} XP</div></div>`).join('');
+  } else ps.style.display='none';
+}
+
+function renderCouncil(){
+  const cl=document.getElementById('cl');cl.innerHTML='';
+  COUNCIL.forEach(c=>{
+    const xp=S.mXP[c.id]||0,pct=mPct(c.id);
+    const d=document.createElement('div');d.className='cc';
+    const trs=c.traits.map(t=>`<span class="trtag">${t}</span>`).join('');
+    d.innerHTML=`<div class="ct"><div class="cav" style="color:${c.col};border-color:${c.bc};background:var(--bg4)">${c.ini}</div><div><div class="cn">${c.name}</div><div class="cr">${c.role}</div></div></div><div class="cq">${c.quote}</div><div class="cw">${c.when}</div><div class="ctrs">${trs}</div><div class="cxr"><div class="cxb"><div class="cxf" style="background:${c.col};width:${pct}%"></div></div><div class="cxn">${pct}% · ${xp} XP</div></div>`;
+    cl.appendChild(d);
+  });
+}
+
+function renderRanks(){
+  const rl=document.getElementById('rl');rl.innerHTML='';
+  const r=rankIdx();
+  RANKS.forEach((rk,i)=>{
+    const cur=i===r,lk=S.totalXP<rk.xp;
+    const pct=Math.min(100,Math.round((S.totalXP/Math.max(rk.xp,1))*100));
+    const d=document.createElement('div');d.className=`rkcard${cur?' cur':''}${lk?' lk':''}`;
+    const uls=rk.unlocks.map(u=>`<div class="uli"><div class="ulicon" style="color:${u.cls==='ty-trial'?'#4ad0a0':u.cls==='ty-ability'?'#9888e8':u.cls==='ty-penalty'?'var(--red)':'#6aafef'}">${u.icon}</div><div><div class="ulname">${u.name}</div><div class="uldesc">${u.desc}</div><span class="ultype ${u.cls}">${u.type.toUpperCase()}</span></div></div>`).join('');
+    d.innerHTML=`<div class="rkh"><div class="rkr">${ROMANS[i]}</div><div class="rknw"><div class="rkn">${rk.name}</div><div class="rkq">${rk.xp.toLocaleString()} XP required</div></div>${cur?'<div class="rkcbadge">CURRENT</div>':''}</div><div class="rkbm"><div class="rkbf" style="width:${pct}%"></div></div><div class="rkul"><div class="rkulh">Unlocks</div>${uls}</div>`;
+    rl.appendChild(d);
+  });
+}
+
+function filt(area,btn){
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderTasks(area);
+}
+
+function go(id,btn){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');btn.classList.add('active');
+  if(id==='progress')renderProgress();
+  if(id==='council')renderCouncil();
+  if(id==='ranks')renderRanks();
+}
+
+function resetDay(){
+  if(!confirm('Reset today? XP earned today will be deducted.'))return;
+  TASKS.filter(t=>S.done[t.id]).forEach(t=>{
+    S.totalXP=Math.max(0,S.totalXP-t.xp);S.aXP[t.area]=Math.max(0,(S.aXP[t.area]||0)-t.xp);
+    const sh=Math.round(t.xp/t.mentors.length);
+    t.mentors.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-sh);});
+  });
+  S.done={};S.skipped={};save();
+  renderTasks('all');renderHero();renderProgress();
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.ftab').classList.add('active');
+  toast('Day reset. Begin again.','good');
+}
+
+let tt;
+function toast(msg,type='good'){
+  const el=document.getElementById('toast');el.textContent=msg;el.className=`toast ${type}`;
+  el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2400);
+}
+
+renderHero();renderTasks('all');
+</script>
+</body>
+</html>
