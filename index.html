@@ -39,7 +39,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .app-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;opacity:0.8;}
 .ornament{text-align:center;color:var(--border2);font-size:11px;margin:5px 0 0;letter-spacing:6px;}
 
-.hero{margin:14px 16px 0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.hero{margin:8px 16px 0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:130px;height:130px;background:radial-gradient(circle,rgba(200,168,75,0.05) 0%,transparent 70%);pointer-events:none;}
 .hero-row{display:flex;align-items:center;gap:13px;margin-bottom:13px;}
 .hero-sigil{width:46px;height:46px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:16px;color:var(--gold);background:var(--bg4);flex-shrink:0;}
@@ -155,18 +155,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .cxn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);min-width:60px;text-align:right;}
 
 /* RANKS */
-.rkcard{border:0.5px solid var(--border);border-radius:12px;margin-bottom:9px;background:var(--bg2);overflow:hidden;}
-.rkcard.cur{border-color:rgba(200,168,75,0.38);background:var(--bg3);}
-.rkcard.lk{opacity:0.3;}
-.rkh{display:flex;align-items:center;gap:11px;padding:13px 13px 9px;}
-.rkr{font-family:'Cinzel',serif;font-size:19px;color:var(--gold);opacity:0.42;min-width:26px;text-align:center;}
 .rkcard.cur .rkr{opacity:1;}
-.rknw{flex:1;}
-.rkn{font-family:'Cinzel',serif;font-size:13px;color:var(--text);letter-spacing:0.04em;}
-.rkq{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-top:2px;}
-.rkcbadge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--gold);border:0.5px solid rgba(200,168,75,0.28);padding:2px 7px;border-radius:20px;}
-.rkbm{height:2px;background:var(--bg4);margin:0 13px 9px;border-radius:1px;overflow:hidden;}
-.rkbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:1px;transition:width 0.5s;}
 .rkul{padding:0 13px 13px;}
 .rkulh{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.11em;color:var(--text3);text-transform:uppercase;margin-bottom:7px;}
 .uli{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
@@ -397,6 +386,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .todo-text-wrap{flex:1;min-width:0;}
 .todo-text{font-size:14px;color:var(--text);line-height:1.4;font-weight:300;word-break:break-word;}
 .todo-text-input{width:100%;background:transparent;border:none;color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;outline:none;padding:0;}
+.todo-edit-btn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 6px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3);background:transparent;cursor:pointer;opacity:0;transition:opacity 0.18s;flex-shrink:0;}
+.todo-item:hover .todo-edit-btn{opacity:0.6;}
 .todo-del{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;border-radius:20px;border:0.5px solid rgba(200,64,64,0.25);color:var(--red);background:transparent;cursor:pointer;opacity:0;transition:opacity 0.18s;flex-shrink:0;}
 .todo-item:hover .todo-del{opacity:0.7;}
 
@@ -409,6 +400,60 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .day-pill.dp-done{background:var(--inner);border-color:var(--inner);color:#fff;}
 .day-pill.dp-skip{background:var(--red-dim);border-color:var(--red);color:var(--red);}
 .day-pill.dp-cur{border-color:var(--gold);color:var(--gold);}
+
+/* ── WEEKLY REVIEW ── */
+.wr-btn{display:flex;align-items:center;justify-content:space-between;margin:14px 16px 0;padding:12px 14px;border:0.5px solid var(--border2);border-radius:10px;background:var(--gold-dim);cursor:pointer;transition:all 0.18s;}
+.wr-btn:hover{background:rgba(200,168,75,0.18);}
+.wr-btn-left{display:flex;align-items:center;gap:9px;}
+.wr-btn-icon{font-size:14px;color:var(--gold);}
+.wr-btn-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:var(--gold);}
+.wr-btn-sub{font-size:11px;color:var(--text3);font-style:italic;margin-top:1px;}
+.wr-btn-arrow{font-size:12px;color:var(--gold);opacity:0.6;}
+
+/* Modal overrides for review */
+.wr-modal{max-height:88vh;overflow-y:auto;padding-bottom:40px;}
+.wr-modal-ttl{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-spacing:0.06em;margin-bottom:3px;}
+.wr-modal-week{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:16px;}
+
+/* Stats strip */
+.wr-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:16px;}
+.wr-stat{background:var(--bg4);border:0.5px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;}
+.wr-stat-val{font-family:'Cinzel',serif;font-size:18px;color:var(--gold);}
+.wr-stat-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;}
+
+/* Area bar mini */
+.wr-areas{background:var(--bg4);border:0.5px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:16px;}
+.wr-areas-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text3);text-transform:uppercase;margin-bottom:9px;}
+.wr-arow{display:grid;grid-template-columns:60px 1fr 36px;align-items:center;gap:8px;margin-bottom:6px;}
+.wr-arow:last-child{margin-bottom:0;}
+.wr-an{font-size:11px;color:var(--text2);font-style:italic;}
+.wr-at{height:3px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.wr-af{height:100%;border-radius:2px;}
+.wr-anum{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3);text-align:right;}
+
+/* Reflection inputs */
+.wr-field{margin-bottom:13px;}
+.wr-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
+.wr-label span{color:var(--gold);margin-right:5px;}
+.wr-textarea{width:100%;background:var(--bg4);border:0.5px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;outline:none;resize:none;min-height:72px;line-height:1.5;transition:border-color 0.18s;}
+.wr-textarea:focus{border-color:rgba(200,168,75,0.4);}
+
+/* History list */
+.wr-hist-empty{text-align:center;padding:20px 0;color:var(--text3);font-style:italic;font-size:13px;}
+.wr-hist-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:12px 13px;margin-bottom:8px;cursor:pointer;transition:border-color 0.18s;}
+.wr-hist-card:hover{border-color:var(--border2);}
+.wr-hist-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.wr-hist-week{font-family:'Cinzel',serif;font-size:12px;color:var(--text);}
+.wr-hist-xp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);opacity:0.7;}
+.wr-hist-preview{font-size:12px;color:var(--text3);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wr-hist-chevron{font-size:10px;color:var(--text3);margin-top:2px;transition:transform 0.2s;}
+.wr-hist-card.open .wr-hist-chevron{transform:rotate(180deg);}
+.wr-hist-body{display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border);}
+.wr-hist-card.open .wr-hist-body{display:block;}
+.wr-hist-section{margin-bottom:8px;}
+.wr-hist-section-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--text3);text-transform:uppercase;margin-bottom:3px;}
+.wr-hist-section-lbl span{margin-right:4px;}
+.wr-hist-text{font-size:13px;color:var(--text2);font-style:italic;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -437,21 +482,24 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <span class="theme-toggle-icon" id="theme-icon2">☀</span>
     </div>
   </div>
-  <div class="hero">
-    <div class="hero-row">
-      <div class="hero-sigil">⬡</div>
-      <div><div class="hero-name">The Polymath</div><div class="hero-rank" id="hero-rank">Rank I — Apprentice</div></div>
+  <div class="scroll-area">
+    <div class="hero">
+      <div class="hero-row">
+        <div class="hero-sigil" id="hero-sigil">⬡</div>
+        <div><div class="hero-name">The Polymath</div><div class="hero-rank" id="hero-rank">Rank I — Apprentice</div></div>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="xpbar" style="width:0%"></div></div>
+      <div class="xp-meta"><div class="xp-ml"><span id="xpnow">0</span> XP</div><div class="xp-mr">next: <span id="xpnext">500</span></div></div>
+      <div class="pills">
+        <div class="pill g" id="st1">Today: 0 XP</div>
+        <div class="pill" id="st2">0/0 tasks</div>
+        <div class="pill" id="st3">Streak: 0</div>
+        <div class="pill r" id="st4" style="display:none">0 skipped</div>
+      </div>
     </div>
-    <div class="xp-track"><div class="xp-fill" id="xpbar" style="width:0%"></div></div>
-    <div class="xp-meta"><div class="xp-ml"><span id="xpnow">0</span> XP</div><div class="xp-mr">next: <span id="xpnext">500</span></div></div>
-    <div class="pills">
-      <div class="pill g" id="st1">Today: 0 XP</div>
-      <div class="pill" id="st2">0/27 tasks</div>
-      <div class="pill" id="st3">Streak: 0</div>
-      <div class="pill r" id="st4" style="display:none">0 skipped</div>
-    </div>
+    <div style="padding:0 16px;margin-top:8px" id="tc"></div>
+    <div style="height:10px"></div>
   </div>
-  <div class="scroll-area" style="margin-top:8px"><div style="padding:0 16px" id="tc"></div><div style="height:10px"></div></div>
 </div>
 
 <!-- PROGRESS -->
@@ -474,7 +522,22 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="brow"><div class="bn">Social</div><div class="bt"><div class="bf" style="background:var(--social)" id="ab-social"></div></div><div class="bnum" id="av-social">0</div></div>
     </div>
     <div class="bsec" id="pen-sec" style="display:none"><div class="btitle">Penalty Log</div><div id="pen-log"></div></div>
+
+    <!-- Weekly Review Entry -->
+    <div class="wr-btn" onclick="openWeeklyReview()">
+      <div class="wr-btn-left">
+        <div class="wr-btn-icon">◈</div>
+        <div><div class="wr-btn-label">Weekly Review</div><div class="wr-btn-sub" id="wr-btn-sub">Reflect on this week</div></div>
+      </div>
+      <div class="wr-btn-arrow">›</div>
+    </div>
+
     <button class="reset-btn" onclick="resetDay()">⟳ Reset Today's Tasks</button>
+    <div style="display:flex;gap:8px;margin:8px 16px 0;">
+      <button class="reset-btn" style="margin:0;flex:1" onclick="exportData()">↓ Export Backup</button>
+      <button class="reset-btn" style="margin:0;flex:1" onclick="document.getElementById('import-file').click()">↑ Import Backup</button>
+      <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+    </div>
     <div style="height:12px"></div>
   </div>
 </div>
@@ -493,7 +556,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <!-- GOALS -->
 <div class="screen" id="screen-goals">
-  <div class="app-header"><div class="app-title">Goals — 2026</div><div class="ornament">· · ·</div></div>
+  <div class="app-header"><div class="app-title">Goals — <span id="goals-year"></span></div><div class="ornament">· · ·</div></div>
   <div class="scroll-area">
     <div id="goal-months"></div>
     <div style="padding:0 16px;margin-top:4px" id="goal-list"></div>
@@ -524,6 +587,50 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <button class="nb" onclick="go('council',this)"><div class="ni">⬡</div><div class="nl">Council</div></button>
   <button class="nb" onclick="go('ranks',this)"><div class="ni">✦</div><div class="nl">Ranks</div></button>
 </nav>
+</div>
+
+<!-- WEEKLY REVIEW MODAL -->
+<div class="modal-ov" id="wr-modal">
+  <div class="modal wr-modal">
+    <div class="wr-modal-ttl">Weekly Review</div>
+    <div class="wr-modal-week" id="wr-modal-week"></div>
+
+    <!-- Stats strip -->
+    <div class="wr-stats">
+      <div class="wr-stat"><div class="wr-stat-val" id="wr-xp">0</div><div class="wr-stat-lbl">XP Earned</div></div>
+      <div class="wr-stat"><div class="wr-stat-val" id="wr-tasks">0</div><div class="wr-stat-lbl">Tasks Done</div></div>
+      <div class="wr-stat"><div class="wr-stat-val" id="wr-streak">0</div><div class="wr-stat-lbl">Streak</div></div>
+    </div>
+
+    <!-- Area breakdown -->
+    <div class="wr-areas">
+      <div class="wr-areas-title">Area Breakdown This Week</div>
+      <div id="wr-area-bars"></div>
+    </div>
+
+    <!-- Reflection fields -->
+    <div class="wr-field">
+      <div class="wr-label"><span>✦</span>What went well this week?</div>
+      <textarea class="wr-textarea" id="wr-well" placeholder="What showed up for you this week? What are you proud of?"></textarea>
+    </div>
+    <div class="wr-field">
+      <div class="wr-label"><span>◈</span>What didn't go well?</div>
+      <textarea class="wr-textarea" id="wr-bad" placeholder="Where did you fall short? Be honest — this is for you."></textarea>
+    </div>
+    <div class="wr-field">
+      <div class="wr-label"><span>◇</span>Intention for next week</div>
+      <textarea class="wr-textarea" id="wr-intent" placeholder="One thing you will do differently. One thing you will protect."></textarea>
+    </div>
+
+    <div class="mbtns" style="margin-bottom:20px;">
+      <button class="mbtn can" onclick="closeWeeklyReview()">Cancel</button>
+      <button class="mbtn conf" style="background:var(--gold-dim);border-color:rgba(200,168,75,0.4);color:var(--gold)" onclick="saveWeeklyReview()">Save Review</button>
+    </div>
+
+    <!-- Past reviews -->
+    <div class="btitle" style="margin-bottom:10px;">Past Reviews</div>
+    <div id="wr-history"></div>
+  </div>
 </div>
 
 <!-- GOAL MODAL — outside shell so fixed positioning covers full screen -->
@@ -1107,10 +1214,12 @@ if(!S.penLog)S.penLog=[];
 if(!S.goals)S.goals={};
 if(!S.todos)S.todos=[];
 if(!S.rankHistory)S.rankHistory={};
+if(!S.weeklyReviews)S.weeklyReviews=[];
 
-const today=new Date().toISOString().slice(0,10);
+function getLocalDate(d=new Date()){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+const today=getLocalDate();
 if(S.lastDate!==today){
-  const yest=new Date(Date.now()-86400000).toISOString().slice(0,10);
+  const yest=getLocalDate(new Date(Date.now()-86400000));
   S.debuffed=S.skippedYest||{};
   if(S.lastDate===yest&&Object.keys(S.done).length>0){S.streak=(S.streak||0)+1;}
   else if(S.lastDate!==yest&&S.lastDate!==''){
@@ -1163,6 +1272,7 @@ function renderHero(){
   const r=rankIdx(),rk=RANKS[r],nx=RANKS[r+1];
   const xpIn=S.totalXP-rk.xp,xpN=nx?nx.xp-rk.xp:1;
   document.getElementById('hero-rank').textContent=`Rank ${ROMANS[r]} — ${rk.name}`;
+  document.getElementById('hero-sigil').textContent=RANK_SIGILS[r];
   document.getElementById('xpbar').style.width=Math.min(100,Math.round((xpIn/xpN)*100))+'%';
   document.getElementById('xpnow').textContent=S.totalXP;
   document.getElementById('xpnext').textContent=nx?nx.xp:'MAX';
@@ -1180,9 +1290,23 @@ function renderTasks(){
   const c=document.getElementById('tc');c.innerHTML='';
 
   if(tasks.length===0){
+    const isFirstTime=Object.keys(S.goals||{}).length===0;
     const empty=document.createElement('div');
-    empty.style.cssText='text-align:center;padding:40px 0;color:var(--text3);font-style:italic;font-size:14px;line-height:1.7;';
-    empty.innerHTML='No goals set for this month.<br><span style="font-size:12px">Go to Goals → add a monthly goal → daily tasks will appear here.</span>';
+    if(isFirstTime){
+      empty.innerHTML=`<div style="margin-top:8px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:14px;padding:22px 18px;">
+        <div style="font-family:'Cinzel',serif;font-size:14px;color:var(--gold);letter-spacing:0.06em;margin-bottom:6px">Welcome, Apprentice.</div>
+        <div style="font-size:13px;color:var(--text2);font-style:italic;line-height:1.6;margin-bottom:18px">The system is watching. Your journey begins with a single goal.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+          <div style="display:flex;gap:11px"><div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);min-width:20px">1</div><div style="font-size:13px;color:var(--text2);line-height:1.5">Go to <b style="color:var(--text);font-weight:400">Goals</b> and add a goal for this month.</div></div>
+          <div style="display:flex;gap:11px"><div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);min-width:20px">2</div><div style="font-size:13px;color:var(--text2);line-height:1.5">Link it to a <b style="color:var(--text);font-weight:400">Mentor</b> — Aurelius for inner work, Kobe for physical.</div></div>
+          <div style="display:flex;gap:11px"><div style="font-family:'Cinzel',serif;font-size:13px;color:var(--gold);min-width:20px">3</div><div style="font-size:13px;color:var(--text2);line-height:1.5">Come back here — <b style="color:var(--text);font-weight:400">daily tasks appear automatically.</b></div></div>
+        </div>
+        <button onclick="go('goals',document.querySelectorAll('.nb')[2])" style="width:100%;padding:12px;background:var(--gold-dim);border:0.5px solid rgba(200,168,75,0.4);border-radius:10px;color:var(--gold);font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.08em;cursor:pointer;">→ Set Your First Goal</button>
+      </div>`;
+    } else {
+      empty.style.cssText='text-align:center;padding:40px 0;color:var(--text3);font-style:italic;font-size:14px;line-height:1.7;';
+      empty.innerHTML='No goals set for this month.<br><span style="font-size:12px">Go to Goals → add a monthly goal → daily tasks will appear here.</span>';
+    }
     c.appendChild(empty);
     return;
   }
@@ -1223,22 +1347,40 @@ function renderTasks(){
   });
 }
 
+// Maps each mentor to their domain areas
+const MENTOR_AREA={
+  ma:['inner','social'],
+  kb:['physical'],
+  dv:['creative','mind'],
+  mm:['physical','mind'],
+  ep:['inner'],
+  ip:['physical'],
+  bm:['mind','wealth']
+};
+
 function doComplete(id,task){
   if(S.done[id]||S.skipped[id])return;
   const t=task||getTodayTasks().find(x=>x.id===id);
   if(!t)return;
-  S.done[id]=true;S.totalXP+=t.xp;
+  let xpEarned=t.xp;
+  if(S.debuffed&&S.debuffed[id]){xpEarned=Math.max(1,Math.round(t.xp*0.8));}
+  S.done[id]=true;S.totalXP+=xpEarned;
   const _ms=t.mentors||[t.mentor||'ma'];
-  const _sh=Math.round(t.xp/_ms.length);
-  // check for new ability unlocks before updating mXP
+  const _sh=Math.round(xpEarned/_ms.length);
   const _prevMXP={};
   _ms.forEach(m=>{_prevMXP[m]=S.mXP[m]||0;});
-  _ms.forEach(m=>{S.mXP[m]=(S.mXP[m]||0)+_sh;});
+  _ms.forEach(m=>{
+    S.mXP[m]=(S.mXP[m]||0)+_sh;
+    const areas=MENTOR_AREA[m]||['mind'];
+    const aShare=Math.round(_sh/areas.length);
+    areas.forEach(area=>{S.aXP[area]=(S.aXP[area]||0)+aShare;});
+  });
   // also tick the week if all 7 days done (simplified: tick week when any day done)
   checkWeekCompletion(t);
   save();renderTasks();renderHero();
   const mn=(t.mentors||[t.mentor||'ma']).map(m=>MENTOR_NAMES[m]||m).join(' · ');
-  toast(`+${t.xp} XP — ${mn}`,'good');
+  const debuffNote=S.debuffed&&S.debuffed[id]?' (debuffed)':'';
+  toast(`+${xpEarned} XP${debuffNote} — ${mn}`,'good');
   // fire ability unlock toasts (delayed so main toast shows first)
   let toastDelay=800;
   _ms.forEach(m=>{
@@ -1249,7 +1391,7 @@ function doComplete(id,task){
       toastDelay+=3800;
     }
   });
-  const nr=rankIdx(),prevXP=S.totalXP-t.xp;let pr=0;
+  const nr=rankIdx(),prevXP=S.totalXP-xpEarned;let pr=0;
   for(let i=0;i<RANKS.length;i++){if(prevXP>=RANKS[i].xp)pr=i;}
   if(nr>pr){
     if(!S.rankHistory)S.rankHistory={};
@@ -1283,7 +1425,12 @@ function undoComplete(id,task){
   S.totalXP=Math.max(0,S.totalXP-t.xp);
   const _um=t.mentors||[t.mentor||'ma'];
   const _ush=Math.round(t.xp/_um.length);
-  _um.forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-_ush);});
+  _um.forEach(m=>{
+    S.mXP[m]=Math.max(0,(S.mXP[m]||0)-_ush);
+    const areas=MENTOR_AREA[m]||['mind'];
+    const aShare=Math.round(_ush/areas.length);
+    areas.forEach(area=>{S.aXP[area]=Math.max(0,(S.aXP[area]||0)-aShare);});
+  });
   // uncheck week if was auto-checked
   const g=S.goals[t.goalId];
   if(g) g.weeks[t.weekIdx].done=false;
@@ -1327,11 +1474,11 @@ function renderProgress(){
     d.innerHTML=`<div class="bec-top"><div class="bec-av" style="color:${c.col};border-color:${c.bc};background:var(--bg4)">${c.ini}</div><div class="bec-info"><div class="bec-name">${c.name}</div><div class="bec-role">${c.role}</div></div><div class="bec-pct${comp?' done':''}">${pct}%</div></div><div class="bec-btrack"><div class="bec-bfill" style="background:${c.col};width:${pct}%"></div></div><div class="bec-traits">${trs}</div>${comp?`<div class="bec-done-lbl">✦ Transformation complete — you have become ${c.name.split(' ')[0]}</div>`:''}`;
     bc.appendChild(d);
   });
-  // mentor xp bars (replacing area bars)
+  const areaScale=Math.max(100,S.totalXP*0.8,RANKS[rankIdx()].xp*0.4)||200;
   ['physical','mind','inner','wealth','creative','social'].forEach(a=>{
     const b=document.getElementById('ab-'+a),v=document.getElementById('av-'+a);
     const xp=S.aXP[a]||0;
-    if(b)b.style.width=Math.min(100,xp/5)+'%';if(v)v.textContent=xp;
+    if(b)b.style.width=Math.min(100,(xp/areaScale)*100)+'%';if(v)v.textContent=xp;
   });
   // penalty log
   const pl=document.getElementById('pen-log'),ps=document.getElementById('pen-sec');
@@ -1694,7 +1841,13 @@ function resetDay(){
   const tasks=getTodayTasks();
   tasks.filter(t=>S.done[t.id]).forEach(t=>{
     S.totalXP=Math.max(0,S.totalXP-t.xp);
-    (t.mentors||[t.mentor||'ma']).forEach(m=>{S.mXP[m]=Math.max(0,(S.mXP[m]||0)-Math.round(t.xp/(t.mentors||[m]).length));});
+    (t.mentors||[t.mentor||'ma']).forEach(m=>{
+      const share=Math.round(t.xp/(t.mentors||[m]).length);
+      S.mXP[m]=Math.max(0,(S.mXP[m]||0)-share);
+      const areas=MENTOR_AREA[m]||['mind'];
+      const aShare=Math.round(share/areas.length);
+      areas.forEach(area=>{S.aXP[area]=Math.max(0,(S.aXP[area]||0)-aShare);});
+    });
     const g=S.goals[t.goalId];if(g)g.weeks[t.weekIdx].done=false;
   });
   S.done={};S.skipped={};save();
@@ -1709,6 +1862,7 @@ function toast(msg,type='good'){
 }
 
 renderHero();renderTasks();
+(function(){const el=document.getElementById('goals-year');if(el)el.textContent=new Date().getFullYear();})();
 
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
@@ -1979,6 +2133,7 @@ function buildTodoItem(t){
     <div class="todo-text-wrap">
       <div class="todo-text" ondblclick="editTodoText(this,'${t.id}')">${t.text}</div>
     </div>
+    <button class="todo-edit-btn" onclick="editTodoText(this.previousElementSibling.querySelector('.todo-text'),'${t.id}')" title="Edit">✎</button>
     <button class="todo-del" onclick="deleteTodo('${t.id}')">✕</button>`;
   return div;
 }
@@ -2032,6 +2187,163 @@ function editTodoText(el, id){
   inp.onblur = finish;
   inp.onkeydown = e => { if(e.key==='Enter') inp.blur(); if(e.key==='Escape'){ inp.value=cur; inp.blur(); } };
 }
+
+function exportData(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`polymath-backup-${today}.json`;
+  a.click();URL.revokeObjectURL(a.href);
+  toast('Backup exported ✓','good');
+}
+
+function importData(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      if(typeof data.totalXP==='undefined'){toast('Invalid backup file','bad');return;}
+      if(!confirm('Import this backup? Your current data will be replaced.'))return;
+      localStorage.setItem('pm_v4',JSON.stringify(data));
+      location.reload();
+    }catch(err){toast('Could not read file','bad');}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+
+// ═══ WEEKLY REVIEW SYSTEM ═══
+
+function getWeekKey(date = new Date()) {
+  // Returns "YYYY-Www" string for the Monday-based week
+  const d = new Date(date);
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate() + 4 - (d.getDay()||7)); // Thursday of current week
+  const yearStart = new Date(d.getFullYear(),0,1);
+  const weekNo = Math.ceil((((d-yearStart)/86400000)+1)/7);
+  return `${d.getFullYear()}-W${String(weekNo).padStart(2,'0')}`;
+}
+
+function getWeekLabel(weekKey) {
+  // Convert YYYY-Www to "Mon DD – Sun DD, YYYY"
+  const [year, w] = weekKey.split('-W');
+  const jan1 = new Date(parseInt(year), 0, 1);
+  const days = (parseInt(w) - 1) * 7;
+  const monday = new Date(jan1);
+  monday.setDate(jan1.getDate() + days - (jan1.getDay()||7) + 1);
+  const sunday = new Date(monday);
+  sunday.setDate(monday.getDate() + 6);
+  const fmt = d => d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+  return `${fmt(monday)} – ${fmt(sunday)}, ${year}`;
+}
+
+function getWeekXPSnapshot() {
+  // Pull current state values as this week's stats
+  const tasks = getTodayTasks();
+  const done = Object.keys(S.done||{}).length;
+  const aXP = {...(S.aXP||{})};
+  return { totalXP: S.totalXP, tasksDone: done, streak: S.streak, aXP };
+}
+
+function openWeeklyReview() {
+  if(!S.weeklyReviews) S.weeklyReviews = [];
+  const wk = getWeekKey();
+  const existing = S.weeklyReviews.find(r => r.week === wk);
+
+  document.getElementById('wr-modal-week').textContent = getWeekLabel(wk);
+
+  // Stats
+  document.getElementById('wr-xp').textContent = S.totalXP;
+  document.getElementById('wr-tasks').textContent = Object.keys(S.done||{}).length;
+  document.getElementById('wr-streak').textContent = S.streak;
+
+  // Area bars
+  const areas = ['physical','mind','inner','wealth','creative','social'];
+  const aColors = {physical:'var(--physical)',mind:'var(--mind)',inner:'var(--inner)',wealth:'var(--wealth)',creative:'var(--creative)',social:'var(--social)'};
+  const maxA = Math.max(1, ...areas.map(a => S.aXP[a]||0));
+  document.getElementById('wr-area-bars').innerHTML = areas.map(a => {
+    const xp = S.aXP[a]||0;
+    const pct = Math.round((xp/maxA)*100);
+    return `<div class="wr-arow">
+      <div class="wr-an">${a.charAt(0).toUpperCase()+a.slice(1)}</div>
+      <div class="wr-at"><div class="wr-af" style="width:${pct}%;background:${aColors[a]}"></div></div>
+      <div class="wr-anum">${xp}</div>
+    </div>`;
+  }).join('');
+
+  // Pre-fill if already reviewed this week
+  document.getElementById('wr-well').value = existing ? existing.well : '';
+  document.getElementById('wr-bad').value = existing ? existing.bad : '';
+  document.getElementById('wr-intent').value = existing ? existing.intent : '';
+
+  // Render history (past weeks, not current)
+  const hist = (S.weeklyReviews||[]).filter(r => r.week !== wk).sort((a,b) => b.week.localeCompare(a.week));
+  const hel = document.getElementById('wr-history');
+  if(hist.length === 0) {
+    hel.innerHTML = `<div class="wr-hist-empty">No past reviews yet.</div>`;
+  } else {
+    hel.innerHTML = hist.map(r => `
+      <div class="wr-hist-card" onclick="toggleWrCard(this)">
+        <div class="wr-hist-top">
+          <div>
+            <div class="wr-hist-week">${getWeekLabel(r.week)}</div>
+            <div class="wr-hist-preview">${r.intent || r.well || '—'}</div>
+          </div>
+          <div class="wr-hist-chevron">⌄</div>
+        </div>
+        <div class="wr-hist-body">
+          ${r.well ? `<div class="wr-hist-section"><div class="wr-hist-section-lbl"><span>✦</span>Went well</div><div class="wr-hist-text">${r.well}</div></div>` : ''}
+          ${r.bad  ? `<div class="wr-hist-section"><div class="wr-hist-section-lbl"><span>◈</span>Didn't go well</div><div class="wr-hist-text">${r.bad}</div></div>` : ''}
+          ${r.intent ? `<div class="wr-hist-section"><div class="wr-hist-section-lbl"><span>◇</span>Intention</div><div class="wr-hist-text">${r.intent}</div></div>` : ''}
+          <div class="wr-hist-section"><div class="wr-hist-section-lbl">Stats</div><div class="wr-hist-text" style="font-style:normal;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3)">${r.totalXP} XP · ${r.tasksDone} tasks · Streak ${r.streak}</div></div>
+        </div>
+      </div>`).join('');
+  }
+
+  document.getElementById('wr-modal').classList.add('show');
+}
+
+function toggleWrCard(el) {
+  el.classList.toggle('open');
+}
+
+function closeWeeklyReview() {
+  document.getElementById('wr-modal').classList.remove('show');
+}
+
+function saveWeeklyReview() {
+  if(!S.weeklyReviews) S.weeklyReviews = [];
+  const wk = getWeekKey();
+  const well = document.getElementById('wr-well').value.trim();
+  const bad  = document.getElementById('wr-bad').value.trim();
+  const intent = document.getElementById('wr-intent').value.trim();
+
+  if(!well && !bad && !intent) { toast('Write something first','bad'); return; }
+
+  const snap = getWeekXPSnapshot();
+  const idx = S.weeklyReviews.findIndex(r => r.week === wk);
+  const entry = { week: wk, well, bad, intent, ...snap, savedAt: Date.now() };
+
+  if(idx >= 0) S.weeklyReviews[idx] = entry;
+  else S.weeklyReviews.unshift(entry);
+
+  save();
+  closeWeeklyReview();
+  updateWrBtn();
+  toast('Review saved ✓','good');
+}
+
+function updateWrBtn() {
+  if(!S.weeklyReviews) return;
+  const wk = getWeekKey();
+  const done = S.weeklyReviews.some(r => r.week === wk);
+  const sub = document.getElementById('wr-btn-sub');
+  if(sub) sub.textContent = done ? 'This week reviewed ✓' : 'Reflect on this week';
+}
+
+updateWrBtn();
 
 </script>
 </body>
